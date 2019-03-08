@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Controls.Data;
+using Controls.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,19 +29,22 @@ namespace Controls
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ControlsDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("ControlsDbConnection")));
+            // Commentary from https://medium.freecodecamp.org/authentication-using-google-in-asp-net-core-2-0-5ec32c803e23
+            services.AddIdentity<UserObject, UserRole>()
+                .AddEntityFrameworkStores<ControlsDbContext>()
+                .AddDefaultTokenProviders();
+            // Add external authentication providers
+            string CId = Configuration["TCGoogleClientID"];
+            string CSec = Configuration["TCGoogleSecret"];
+            services.AddAuthentication()
+                .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; });
+            //                .AddAuthenticationCore(IServiceCollection coreService, Action<AuthenticationOptions> coreConfig);
+            // need these services for account recovery or two factor authentication
+            services.AddTransient<IEmailSender, ControlsEmailSender>();
+            services.AddTransient<IEmailSender, ControlsSmsSender>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

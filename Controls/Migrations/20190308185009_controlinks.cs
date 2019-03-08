@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Controls.Data.Migrations
+namespace Controls.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class controlinks : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,28 @@ namespace Controls.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "contactLinks",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Parent = table.Column<string>(nullable: true),
+                    Child = table.Column<string>(nullable: true),
+                    Creation = table.Column<DateTime>(nullable: false),
+                    LastUsed = table.Column<DateTime>(nullable: false),
+                    Expires = table.Column<DateTime>(nullable: false),
+                    Type = table.Column<string>(nullable: false),
+                    Relationship = table.Column<string>(nullable: false),
+                    GivenNames = table.Column<string>(nullable: true),
+                    FamilyName = table.Column<string>(nullable: true),
+                    Phones = table.Column<string>(nullable: true),
+                    AlternateEmail = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_contactLinks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,8 +115,8 @@ namespace Controls.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -138,8 +160,8 @@ namespace Controls.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -209,6 +231,9 @@ namespace Controls.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "contactLinks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

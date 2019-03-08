@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Controls.Models;
 
 namespace Controls.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ControlsDbContext : IdentityDbContext<UserObject, UserRole, string>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public ControlsDbContext(DbContextOptions<ControlsDbContext> options)
             : base(options)
         {
         }
+        public DbSet<ContactLink> contactLinks { get; set; }
     }
 }
