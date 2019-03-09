@@ -1,0 +1,85 @@
+﻿@page
+@model Controls.Areas.Contacts.AddContactModel
+
+@{
+    ViewData["Title"] = "AddContact";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>AddContact</h1>
+
+<h4>ContactLink</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Parent" class="control-label"></label>
+                <input asp-for="ContactLink.Parent" class="form-control" />
+                <span asp-validation-for="ContactLink.Parent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Child" class="control-label"></label>
+                <input asp-for="ContactLink.Child" class="form-control" />
+                <span asp-validation-for="ContactLink.Child" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Creation" class="control-label"></label>
+                <input asp-for="ContactLink.Creation" class="form-control" />
+                <span asp-validation-for="ContactLink.Creation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.LastUsed" class="control-label"></label>
+                <input asp-for="ContactLink.LastUsed" class="form-control" />
+                <span asp-validation-for="ContactLink.LastUsed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Expires" class="control-label"></label>
+                <input asp-for="ContactLink.Expires" class="form-control" />
+                <span asp-validation-for="ContactLink.Expires" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Type" class="control-label"></label>
+                <input asp-for="ContactLink.Type" class="form-control" />
+                <span asp-validation-for="ContactLink.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Relationship" class="control-label"></label>
+                <input asp-for="ContactLink.Relationship" class="form-control" />
+                <span asp-validation-for="ContactLink.Relationship" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.GivenNames" class="control-label"></label>
+                <input asp-for="ContactLink.GivenNames" class="form-control" />
+                <span asp-validation-for="ContactLink.GivenNames" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.FamilyName" class="control-label"></label>
+                <input asp-for="ContactLink.FamilyName" class="form-control" />
+                <span asp-validation-for="ContactLink.FamilyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.Phones" class="control-label"></label>
+                <input asp-for="ContactLink.Phones" class="form-control" />
+                <span asp-validation-for="ContactLink.Phones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactLink.AlternateEmail" class="control-label"></label>
+                <input asp-for="ContactLink.AlternateEmail" class="form-control" />
+                <span asp-validation-for="ContactLink.AlternateEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

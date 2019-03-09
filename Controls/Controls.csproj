@@ -4,12 +4,19 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>aspnet-Controls-20C53A6C-B1CF-4431-AD8C-13B5D6ABBF35</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <Version>2.0.0</Version>
+    <Authors>tom jones</Authors>
+    <Company>tomjones.us</Company>
+    <Product>Controls</Product>
+    <Description>ontrols web sit for User Contacts</Description>
+    <PackageProjectUrl>https://github.com/TomCJones/Controls</PackageProjectUrl>
   </PropertyGroup>
 
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
 

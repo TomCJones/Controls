@@ -1,8 +1,41 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Privacy Policy Summary";
 }
-<h1>@ViewData["Title"]</h1>
+<form id="privacy-details" action="./PrivacyLegal" method="get" class="form-horizontal">
+    <div class="page-title">
+        <span style="align-content:flex-start;font-size:30px;font-weight:500">@ViewData["Title"]</span>
+        <button type="submit" class="btn btn-primary" name="privacylegal"
+                style="align-content:flex-end; text-wrap:normal; white-space:normal"
+                value="FullDetails" title="Click Here for more details">
+            Click Here for full details
+        </button>
+    </div>
+</form>
 
-<p>Use this page to detail your site's privacy policy.</p>
+@{ViewData["inform"] = "There are two meanings of informed consent. (1) You understand what is being asked. (2) You have access to information about what we do with your data. This site provides both."; }
+<p>
+    This site will not use your information without your
+    <span class="hover-text" onclick="displaytitle(this)" title='@ViewData["inform"]'>informed consent</span>.
+    We will respect instructions that you give us about the use of your information.
+</p>
+<h4>This site uses Cookies</h4>
+<p>Because it provids a consistent user experience on the web and for no other purpose. This site does not allow advertisers to put cookies on your device.</p>
+<h4>This site will enable you to register with your user data.</h4>
+<p>But only if you chose to do so for your own benefit. We will obtain your informed consent and issue you a reciept for our actions. All user information on this site is assoicated with a registered user.</p>
+<h4>If you register you must provide a means to contact you.</h4>
+<p>
+    This allows you to recover from lost credentials and enables us to notify you of problems as required by law and good ethical behavior.
+    Either email or mobile phone (for SMS) are accepted at this time.
+</p>
+<h4>This Site encourages Feedback for any reason from any vistor.</h4>
+<p>Click on this to offer feedback. We try diligently to respond to any reasonable request.</p>
+
+<h4>If registered you have the right to contact us for the following reasons.</h4>
+<p style="color:deeppink">The following will all be hyperlinks to appropriate action pages.</p>
+<p><a href="../Identity/Account/Manage/DownloadPersonalData">Discover what information we hold about you.</a></p>
+<p>Revoke your registration. We will disable your registration and remove any data that we are not required by law to retain.</p>
+<p>Re-enable or re-establish your registration if we are required to maintain data about you.</p>
+<p><a href="../Identity/Account/Manage">Change or remove any data that you have provided to us.</a></p>
+<p>Challenge or remove any data that we have obtained from others about you.</p>

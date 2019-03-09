@@ -1,10 +1,39 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
+<!--Header-->
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 style="font-family:Garamond, Times, serif; font-weight:bold" class="display-8">
+        Privacy Compliant Controller for User Information
+    </h1>
 </div>
+
+<div id="head-box" class="box-hilite">
+
+    <div id="HeadTopHalf" class="box-top-image" style="height:129px; background-image:url(../images/StarsHalf.png)" width="100%">
+    </div>
+
+    <div id="HeadBottom" class="relative">
+        <div class="box-top" style="padding:8px 12px 16px 20px; margin-bottom:10px">
+            <div class="box-top-content" style="width:100%">
+                <div class="box-zero-height no-mobile">
+                    <img class="box-top-logo" alt="Boss image" src="~/images/T044.png">
+                </div>
+                <div class="large-text" title="Controls Data Access">
+                    Provides for the creation of an emergency contact list.
+                </div>
+
+                <div style="vertical-align:baseline; justify-content:flex-end">
+                    <button data-control-name="topcard_start" aria-pressed="false" aria-label="Start" id="start" action="~/Contacts/Display"
+                            class="btn">
+                        <span>Start</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
