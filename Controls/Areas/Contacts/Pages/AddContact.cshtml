@@ -1,14 +1,15 @@
 ﻿@page
-@model Controls.Areas.Contacts.AddContactModel
-
+@using Controls.Areas.Contacts.Pages
+@model AddContactModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "AddContact";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>AddContact</h1>
+<h1 style="display:inline">Add Contact</h1> for @Model.Username
 
-<h4>ContactLink</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">

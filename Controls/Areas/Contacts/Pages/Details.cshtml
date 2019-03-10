@@ -1,0 +1,86 @@
+﻿@page "/Contacts/Details"
+@model Controls.Areas.Contacts.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Contacts</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Parent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Parent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Child)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Child)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Creation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Creation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.LastUsed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.LastUsed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Expires)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Expires)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Relationship)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Relationship)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.GivenNames)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.GivenNames)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.FamilyName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.FamilyName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.Phones)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.Phones)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactLink.AlternateEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactLink.AlternateEmail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ContactLink.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

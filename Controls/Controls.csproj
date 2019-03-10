@@ -8,7 +8,7 @@
     <Authors>tom jones</Authors>
     <Company>tomjones.us</Company>
     <Product>Controls</Product>
-    <Description>ontrols web sit for User Contacts</Description>
+    <Description>Controls web site for User Contacts</Description>
     <PackageProjectUrl>https://github.com/TomCJones/Controls</PackageProjectUrl>
   </PropertyGroup>
 
@@ -16,11 +16,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.2" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <Folder Include="Areas\Contacts\Pages\Shared\" />
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
