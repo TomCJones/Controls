@@ -53,7 +53,7 @@ namespace Controls.Areas.Contacts.Pages
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return LocalRedirect("/Identity/Account/Manage/signinrequired");
             }
 
             var userName = await _userManager.GetUserNameAsync(user);

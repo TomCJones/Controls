@@ -15,60 +15,56 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="ContactLink.Parent" class="control-label"></label>
-                <input asp-for="ContactLink.Parent" class="form-control" />
-                <span asp-validation-for="ContactLink.Parent" class="text-danger"></span>
+                <label>Email for Contact</label>
+                <input asp-for="contactLink.Child" class="form-control" />
+                <span asp-validation-for="contactLink.Child" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.Child" class="control-label"></label>
-                <input asp-for="ContactLink.Child" class="form-control" />
-                <span asp-validation-for="ContactLink.Child" class="text-danger"></span>
+                <label asp-for="contactLink.Creation" class="control-label"></label>
+                <input asp-for="contactLink.Creation" class="form-control" />
+                <span asp-validation-for="contactLink.Creation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.Creation" class="control-label"></label>
-                <input asp-for="ContactLink.Creation" class="form-control" />
-                <span asp-validation-for="ContactLink.Creation" class="text-danger"></span>
+                <label asp-for="contactLink.LastUsed" class="control-label"></label>
+                <input asp-for="contactLink.LastUsed" class="form-control" />
+                <span asp-validation-for="contactLink.LastUsed" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.LastUsed" class="control-label"></label>
-                <input asp-for="ContactLink.LastUsed" class="form-control" />
-                <span asp-validation-for="ContactLink.LastUsed" class="text-danger"></span>
+                <label asp-for="contactLink.Expires" class="control-label"></label>
+                <input asp-for="contactLink.Expires" class="form-control" />
+                <span asp-validation-for="contactLink.Expires" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.Expires" class="control-label"></label>
-                <input asp-for="ContactLink.Expires" class="form-control" />
-                <span asp-validation-for="ContactLink.Expires" class="text-danger"></span>
+                <label asp-for="contactLink.Type" class="control-label"></label>
+                <input asp-for="contactLink.Type" class="form-control" />
+                <span asp-validation-for="contactLink.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.Type" class="control-label"></label>
-                <input asp-for="ContactLink.Type" class="form-control" />
-                <span asp-validation-for="ContactLink.Type" class="text-danger"></span>
+                <label asp-for="contactLink.Relationship" class="control-label"></label>
+                <input asp-for="contactLink.Relationship" class="form-control" />
+                <span asp-validation-for="contactLink.Relationship" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.Relationship" class="control-label"></label>
-                <input asp-for="ContactLink.Relationship" class="form-control" />
-                <span asp-validation-for="ContactLink.Relationship" class="text-danger"></span>
+                <label asp-for="contactLink.GivenNames" class="control-label"></label>
+                <input asp-for="contactLink.GivenNames" class="form-control" />
+                <span asp-validation-for="contactLink.GivenNames" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.GivenNames" class="control-label"></label>
-                <input asp-for="ContactLink.GivenNames" class="form-control" />
-                <span asp-validation-for="ContactLink.GivenNames" class="text-danger"></span>
+                <label asp-for="contactLink.FamilyName" class="control-label"></label>
+                <input asp-for="contactLink.FamilyName" class="form-control" />
+                <span asp-validation-for="contactLink.FamilyName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.FamilyName" class="control-label"></label>
-                <input asp-for="ContactLink.FamilyName" class="form-control" />
-                <span asp-validation-for="ContactLink.FamilyName" class="text-danger"></span>
+                <label asp-for="contactLink.Phones" class="control-label"></label>
+                <input asp-for="contactLink.Phones" class="form-control" />
+                <span asp-validation-for="contactLink.Phones" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContactLink.Phones" class="control-label"></label>
-                <input asp-for="ContactLink.Phones" class="form-control" />
-                <span asp-validation-for="ContactLink.Phones" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactLink.AlternateEmail" class="control-label"></label>
-                <input asp-for="ContactLink.AlternateEmail" class="form-control" />
-                <span asp-validation-for="ContactLink.AlternateEmail" class="text-danger"></span>
+                <label asp-for="contactLink.AlternateEmail" class="control-label"></label>
+                <input asp-for="contactLink.AlternateEmail" class="form-control" />
+                <span asp-validation-for="contactLink.AlternateEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

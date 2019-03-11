@@ -29,6 +29,8 @@ namespace Controls.Areas.Contacts.Pages
             _context = context;
         }
         public string Username { get; set; }
+        public DateTime CreatonDate { get; set; } = DateTime.Now;
+        public DateTime LastUsed { get; set; } = DateTime.Now;
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -43,12 +45,13 @@ namespace Controls.Areas.Contacts.Pages
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;
+                            
 
             return Page();
         }
 
         [BindProperty]
-        public ContactLink ContactLink { get; set; }
+        public ContactLink contactLink { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -57,7 +60,7 @@ namespace Controls.Areas.Contacts.Pages
                 return Page();
             }
 
-            _context.contactLinks.Add(ContactLink);
+            _context.contactLinks.Add(contactLink);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

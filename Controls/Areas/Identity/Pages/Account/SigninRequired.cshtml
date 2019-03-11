@@ -1,0 +1,12 @@
+﻿@page "/Identity/Account/Manage/SigninRequired"
+@model Controls.Areas.Identity.Pages.Account.SigninRequiredModel
+@{
+}
+<div class="form-group">
+    <form method="get" action="~/Identity/Account/Login">
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+        <p class="text-danger">You must be signed into a registered account to change or remove data.</p>
+        <p>All user information controlled by this site is associated with registered accounts.</p>
+        <button id="redirect-signin" type="submit" formaction="~/Identity/Account/Login" class="btn btn-link">Click to sign in</button>
+    </form>
+</div>
