@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Controls.Models;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Controls.Areas.Contacts.Pages
 {
     public class AddContactModel : PageModel
     {
-
         private readonly UserManager<UserObject> _userManager;
         private readonly SignInManager<UserObject> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -28,9 +28,30 @@ namespace Controls.Areas.Contacts.Pages
             _emailSender = emailSender;
             _context = context;
         }
+        // these are set in the get
         public string Username { get; set; }
-        public DateTime CreatonDate { get; set; } = DateTime.Now;
-        public DateTime LastUsed { get; set; } = DateTime.Now;
+        [BindProperty]
+        public string UserID { get; set; }
+        [BindProperty]
+        public DateTime Expiration { get; set; } 
+        // these are set by the user
+        [Required]
+        [EmailAddress]
+        [BindProperty]
+        public string ContactEmail { get; set; }
+        [BindProperty]
+        public string Type { get; set; }
+        [Required]
+        [BindProperty]
+        public string Relationship { get; set; }
+        [BindProperty]
+        public string GivenNames { get; set; }
+        [BindProperty]
+        public string FamilyNames { get; set; }
+        [BindProperty]
+        public string Phones { get; set; }
+        [BindProperty]
+        public string Emails { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -41,17 +62,16 @@ namespace Controls.Areas.Contacts.Pages
             }
 
             var userName = await _userManager.GetUserNameAsync(user);
-            var email = await _userManager.GetEmailAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var userID = await _userManager.GetUserIdAsync(user);
+            int time2expireInYears = 10;
+            TimeSpan countYears = new TimeSpan(365, 5, 48, 46) * time2expireInYears; //365.2422 days per year
+            Expiration = DateTime.Now + countYears;
 
-            Username = userName;
-                            
+            Username = userName;  //  just for display on web page
+            UserID = userID;
 
             return Page();
         }
-
-        [BindProperty]
-        public ContactLink contactLink { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -59,6 +79,29 @@ namespace Controls.Areas.Contacts.Pages
             {
                 return Page();
             }
+
+            var cEmail = ContactEmail;
+            UserObject contact = await _userManager.FindByEmailAsync(cEmail);
+            if (contact == null)
+            {
+                contact = new UserObject { UserName = cEmail, Email = cEmail };
+                var result = await _userManager.CreateAsync(contact);
+                if (!result.Succeeded)
+                { throw new SystemException("could not create user"); }
+            }
+
+            ContactLink contactLink = new ContactLink();
+            contactLink.Parent = UserID;   // there is an edge case not covered if the user is deleted between get and post - if it were valid the same could occur later as well - need to handle that anyway
+            contactLink.Child = contact.Id; // contact.Id;
+            contactLink.Creation = DateTime.Now;
+            contactLink.LastUsed = DateTime.Now;
+            contactLink.Expires = Expiration;
+            contactLink.Type = Type;
+            contactLink.Relationship = Relationship;
+            contactLink.GivenNames = GivenNames;
+            contactLink.FamilyName = FamilyNames;
+            contactLink.Phones = Phones;
+            contactLink.AlternateEmail = Emails;
 
             _context.contactLinks.Add(contactLink);
             await _context.SaveChangesAsync();
