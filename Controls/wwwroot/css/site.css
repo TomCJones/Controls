@@ -29,7 +29,7 @@ html {
 
 .relative {
     position: relative;
-
+}
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -44,7 +44,9 @@ html {
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
-}    background-color: white;
+}
+.box-hilite {
+    background-color: white;
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
@@ -64,6 +66,13 @@ button.accept-policy {
     display:flex;
     justify-content:space-between;
 }
+@media (min-width:200px) {
+    h1 {font-size: 1.5rem;}
+}
+@media (min-width:800px) {
+    h1 { font-size: 2.5rem;}
+}
+
 .box-zero-height {
     height: 0px;
     vertical-align: baseline;
@@ -87,7 +96,7 @@ button.accept-policy {
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 990px) {
     .no-narrow {
         display: none;
     }

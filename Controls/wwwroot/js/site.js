@@ -9,3 +9,7 @@ function setpurpose(purpose) {
     alert(purpose);
 }
 
+function setContents(el, text) {
+    el.innertext(text);
+}
+

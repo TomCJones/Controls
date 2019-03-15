@@ -48,6 +48,8 @@ namespace Controls.Areas.Contacts.Pages
             public string PhoneNumber { get; set; }
         }
 
+        
+
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -69,6 +71,9 @@ namespace Controls.Areas.Contacts.Pages
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
+
+            // get contacts
+
 
             return Page();
         }

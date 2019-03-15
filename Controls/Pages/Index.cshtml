@@ -26,10 +26,10 @@
                     Provides for the creation of an emergency contact list.
                 </div>
 
-                <form id="StartContacts" method="get" action="~/Contacts/Display">
+                <form id="StartContacts" method="get" action="~/Contacts/Display" style="vertical-align:baseline">
                     <div style="vertical-align:baseline; justify-content:flex-end">
-                        <span class="no-narrow large-text" style="vertical-align:central"> just click --> </span>
-                        <button data-control-name="topcard_start" aria-pressed="false" aria-label="Start" id="start" class="btn">
+                        <span class="no-narrow large-text" style="vertical-align:baseline"> just click --> </span>
+                        <button data-control-name="topcard_start" aria-pressed="false" aria-label="Start" id="start" class="btn" onclick="setContents(this, 'Working')">
                             <span>Start</span>
                         </button>
                     </div>
