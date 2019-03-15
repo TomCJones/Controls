@@ -87,6 +87,12 @@ button.accept-policy {
     }
 }
 
+@media only screen and (max-width: 800px) {
+    .no-narrow {
+        display: none;
+    }
+}
+
 .large-text {
     vertical-align: baseline;
     font-size: x-large;
