@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Controls.Data;
 using Controls.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Controls.Areas.Contacts.Pages
 {
@@ -16,15 +18,18 @@ namespace Controls.Areas.Contacts.Pages
         private readonly UserManager<UserObject> _userManager;
         private readonly SignInManager<UserObject> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly ControlsDbContext _context;
 
         public DisplayModel(
             UserManager<UserObject> userManager,
             SignInManager<UserObject> signInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ControlsDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _context = context;
         }
 
         public string Username { get; set; }
@@ -48,8 +53,17 @@ namespace Controls.Areas.Contacts.Pages
             public string PhoneNumber { get; set; }
         }
 
-        
+        public List<ContactLink> userContacts { get; set; }
 
+        public class displayContact {
+            public string fName;
+            public string gName;
+            public string cEmail;
+            public string cPhone;
+        }
+        public List<displayContact> displayContacts {get; set;}
+    
+        // start controllers for this page
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -73,7 +87,7 @@ namespace Controls.Areas.Contacts.Pages
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
 
             // get contacts
-
+            userContacts = await _context.contactLinks.ToListAsync();
 
             return Page();
         }
