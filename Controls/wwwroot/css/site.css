@@ -45,6 +45,12 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
+
+.table-padding td {
+    margin:2px;
+    padding:2px;
+}
+
 .box-hilite {
     background-color: white;
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);

@@ -56,13 +56,13 @@ namespace Controls.Areas.Contacts.Pages
 
         public List<ContactLink> userContacts { get; set; }
 
-        public class displayContact {
+        public class DisplayContact {
             public string fName;
             public string gName;
             public string cEmail;
             public string cPhone;
         }
-        public List<displayContact> displayContacts {get; set;}
+        public List<DisplayContact> displayContacts {get; set;}
     
         // start controllers for this page
         public async Task<IActionResult> OnGetAsync()
@@ -90,13 +90,15 @@ namespace Controls.Areas.Contacts.Pages
 
             // get contacts
             userContacts = await _context.contactLinks.ToListAsync();
-            displayContacts = new List<displayContact>();
+            displayContacts = new List<DisplayContact>();
             foreach (ContactLink cl in userContacts)
             {
                 if (cl.Parent == user.Id)
                 { 
-                    displayContact dc = new displayContact();
-                    dc.cEmail = "email goes here";
+                    DisplayContact dc = new DisplayContact();
+                    dc.cEmail = "email not found";
+                    UserObject child = await _userManager.FindByIdAsync(cl.Child);
+                    if (child !=null) { dc.cEmail = child.Email; }
                     dc.cPhone = cl.Phones;
                     dc.fName = cl.FamilyName;
                     dc.gName = cl.GivenNames;

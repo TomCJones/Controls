@@ -45,28 +45,26 @@
 
         <h4>Contacts in the User Record</h4>
         <p>This section is not complete, but it does show how the data might be displayed. The edit and delete links are not yet active.</p>
-        <table>
+        <table class="table-padding" style="border-collapse:separate" >
             @{
-                if (Model.userContacts.Count > 0)
+                if (Model.displayContacts.Count > 0)
                 {
 
                     <tr style="text-decoration:underline; text-underline-position:alphabetic; font-weight:600; text-align:center; margin:9px">
-                        <td>email</td>
+                        <td style="padding-right:15px">email</td>
                         <td>given</td>
                         <td>family</td>
                         <td>actions</td>
                     </tr>
-                    @foreach (Controls.Models.ContactLink userContact in Model.userContacts)
+
+                    @foreach (DisplayModel.DisplayContact dc in Model.displayContacts)
                     {
-                        if (@userContact.Parent == Model.Userid)
-                        {
-                            <tr>
-                                <td>@userContact.Child</td>
-                                <td>@userContact.GivenNames</td>
-                                <td>@userContact.FamilyName</td>
-                                <td> <a href="/">edit</a> <a href="/">delete</a></td>
-                            </tr>
-                        }
+                        <tr>
+                            <td style="padding-right:15px">@dc.cEmail</td>
+                            <td>@dc.gName</td>
+                            <td>@dc.fName</td>
+                            <td> <a href="/">edit</a> <a href="/">delete</a></td>
+                        </tr>
                     }
 
                 }
