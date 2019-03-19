@@ -33,6 +33,7 @@ namespace Controls.Areas.Contacts.Pages
         }
 
         public string Username { get; set; }
+        public string Userid { get; set; }
 
         public bool IsEmailConfirmed { get; set; }
 
@@ -77,6 +78,7 @@ namespace Controls.Areas.Contacts.Pages
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;
+            Userid = user.Id;
 
             Input = new InputModel
             {
@@ -88,6 +90,19 @@ namespace Controls.Areas.Contacts.Pages
 
             // get contacts
             userContacts = await _context.contactLinks.ToListAsync();
+            displayContacts = new List<displayContact>();
+            foreach (ContactLink cl in userContacts)
+            {
+                if (cl.Parent == user.Id)
+                { 
+                    displayContact dc = new displayContact();
+                    dc.cEmail = "email goes here";
+                    dc.cPhone = cl.Phones;
+                    dc.fName = cl.FamilyName;
+                    dc.gName = cl.GivenNames;
+                    displayContacts.Add(dc);
+                }
+            }
 
             return Page();
         }

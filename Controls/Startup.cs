@@ -14,6 +14,7 @@ using Controls.Data;
 using Controls.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Controls
 {
@@ -46,7 +47,6 @@ namespace Controls
             services.AddTransient<IEmailSender, ControlsEmailSender>();
             services.AddTransient<IEmailSender, ControlsSmsSender>();
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -64,18 +64,64 @@ namespace Controls
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+
             using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 scope.ServiceProvider.GetRequiredService<ControlsDbContext>().Database.Migrate();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            /*
+            // following code is designed to get around same-site restrictions introduced in Apple iOS 12 --  it only applies to ASP.NET 2.2
+            // from https://brockallen.com/2019/01/11/same-site-cookies-asp-net-core-and-external-authentication-providers/
+            // problems have been reported on that site using this code with chunked cookies
+            app.Use(async (ctx, next) =>
+            {
+                var schemes = ctx.RequestServices.GetRequiredService<IAuthenticationSchemeProvider>();
+                var handlers = ctx.RequestServices.GetRequiredService<IAuthenticationHandlerProvider>();
+                foreach (var scheme in await schemes.GetRequestHandlerSchemesAsync())
+                {
+                    var handler = await handlers.GetHandlerAsync(ctx, scheme.Name) as IAuthenticationRequestHandler;
+                    if (handler != null)
+                    {
+                        bool bRet =  await handler.HandleRequestAsync(); // returns true if request processing should stop
+                        // start same-site cookie special handling
+                        if (bRet)
+                        {
+                            string location = null;
+                            if (ctx.Response.StatusCode == 302)
+                            {
+                                location = ctx.Response.Headers["location"];
+                            }
+                            else if (ctx.Request.Method == "GET" && !ctx.Request.Query["skip"].Any())
+                            {
+                                location = ctx.Request.Path + ctx.Request.QueryString + "&skip=1";
+                            }
 
+                            if (location != null)
+                            {
+                                ctx.Response.StatusCode = 200;
+                                var html = $@"
+                        <html><head>
+                            <meta http-equiv='refresh' content='0;url={location}' />
+                        </head></html>";
+                                await ctx.Response.WriteAsync(html);
+                            }
+                        }
+                        // end same-site cookie special handling
+                       
+                        return;
+                    }
+                }
+
+                await next();
+            });
+
+ */
             app.UseMvc();
         }
     }

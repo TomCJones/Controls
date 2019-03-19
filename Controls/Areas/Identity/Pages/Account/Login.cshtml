@@ -9,7 +9,8 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to sign in.</h4>
+            <h4>Preferred identification providers.</h4>
+            <p>These providers all can autenticate the user as the owner of the user information stored on this site.</p>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -17,7 +18,7 @@
                     <div>
                         <p>
                             There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
+                            for details on setting up this ASP.NET application to support signing in via external services.
                         </p>
                     </div>
                 }

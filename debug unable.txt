@@ -1,0 +1,17 @@
+Unable to find a process called dotnet with arguments .\Controls.dll. The process may still be starting, please try again.
+
+View Msvsmon's help for more information.</Data>
+<Binary>08005E80</Binary></EventData></Event>
+<Event><System><Provider Name="Visual Studio Remote Debugger"/>
+<EventID>1001</EventID>
+<Level>1</Level>
+<Task>0</Task>
+<Keywords>Keywords</Keywords>
+<TimeCreated SystemTime="2019-02-24T21:58:26Z"/>
+<EventRecordID>656871609</EventRecordID>
+<Channel>Application</Channel>
+<Computer>RD00155D24E194</Computer>
+<Security/></System>
+<EventData><Data>Msvsmon was unable to start a server named '127.0.0.1:50191'. 
+The following error occurred: An instance of the remote debugger is already running on this computer, or another process is already bound to the specified TCP/IP port.
+

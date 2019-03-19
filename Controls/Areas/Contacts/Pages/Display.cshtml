@@ -44,7 +44,7 @@
     <div class="col-md-7">
 
         <h4>Contacts in the User Record</h4>
-
+        <p>This section is not complete, but it does show how the data might be displayed. The edit and delete links are not yet active.</p>
         <table>
             @{
                 if (Model.userContacts.Count > 0)
@@ -58,12 +58,15 @@
                     </tr>
                     @foreach (Controls.Models.ContactLink userContact in Model.userContacts)
                     {
-                        <tr>
-                            <td>@userContact.Child</td>
-                            <td>@userContact.GivenNames</td>
-                            <td>@userContact.FamilyName</td>
-                            <td> <a href="/">edit</a> <a href="/">delete</a></td>
-                        </tr>
+                        if (@userContact.Parent == Model.Userid)
+                        {
+                            <tr>
+                                <td>@userContact.Child</td>
+                                <td>@userContact.GivenNames</td>
+                                <td>@userContact.FamilyName</td>
+                                <td> <a href="/">edit</a> <a href="/">delete</a></td>
+                            </tr>
+                        }
                     }
 
                 }
@@ -76,7 +79,7 @@
         </table>
         <form id="profile-form" method="get">
             <div style="margin-top:22px">
-                The following action for for adding one new contact for the user </>
+                The following action is for adding one new contact for your record. </>
                 <button type="submit" formaction="/Contacts/AddContact">
                     Add Contact
                 </button>

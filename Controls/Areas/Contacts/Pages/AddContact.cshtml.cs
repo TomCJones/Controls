@@ -63,7 +63,7 @@ namespace Controls.Areas.Contacts.Pages
 
             var userName = await _userManager.GetUserNameAsync(user);
             var userID = await _userManager.GetUserIdAsync(user);
-            int time2expireInYears = 10;
+            int time2expireInYears = 10;   //  TODO create a config file with this kind of data  --  should this be a float type?
             TimeSpan countYears = new TimeSpan(365, 5, 48, 46) * time2expireInYears; //365.2422 days per year
             Expiration = DateTime.Now + countYears;
 
@@ -89,9 +89,13 @@ namespace Controls.Areas.Contacts.Pages
                 if (!result.Succeeded)
                 { throw new SystemException("could not create user"); }
             }
+            else
+            {
+                // TODO  inform uses that contact email is already in the db and what significance that might have for them
+            }
 
             ContactLink contactLink = new ContactLink();
-            contactLink.Parent = UserID;   // there is an edge case not covered if the user is deleted between get and post - if it were valid the same could occur later as well - need to handle that anyway
+            contactLink.Parent = UserID;   // there is an edge case not covered if the user is deleted between get and post - even if it were valid now, the same could occur later as well - TODO need to handle that anyway
             contactLink.Child = contact.Id; // contact.Id;
             contactLink.Creation = DateTime.Now;
             contactLink.LastUsed = DateTime.Now;
@@ -103,10 +107,17 @@ namespace Controls.Areas.Contacts.Pages
             contactLink.Phones = Phones;
             contactLink.AlternateEmail = Emails;
 
-            _context.contactLinks.Add(contactLink);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.contactLinks.Add(contactLink);
+                await _context.SaveChangesAsync(); //  do we need to check result here and throw if failed?
+            }
+            catch
+            {
+                throw new SystemException("could not create contact");   // TODO duplicates or write errors should not happen - but we should deal with them in a more friendly way if they do
+            } 
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index");  //  TODO make it possible to redirect to the page that brought us here
         }
     }
 }
