@@ -41,13 +41,17 @@ namespace Controls
             string CId = Configuration["TCGoogleClientID"];
             string CSec = Configuration["TCGoogleSecret"];
             services.AddAuthentication()
-                .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; });
+                .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; o.CorrelationCookie.SameSite = SameSiteMode.None; });  // same site fix
             //                .AddAuthenticationCore(IServiceCollection coreService, Action<AuthenticationOptions> coreConfig);
             // need these services for account recovery or two factor authentication
             services.AddTransient<IEmailSender, ControlsEmailSender>();
             services.AddTransient<IEmailSender, ControlsSmsSender>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddAuthentication()    // TODO this was added to overcome iOS 12 same site problem - try to get a better solution in the future
+                .Services.ConfigureExternalCookie(opt => 
+                { opt.Cookie = new CookieBuilder { SameSite = SameSiteMode.None }; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +76,7 @@ namespace Controls
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.None });  // try to handle some other way, like below
 
             app.UseAuthentication();
             /*

@@ -8,3 +8,14 @@
     <h1>@ViewData["Title"]</h1>
     <p>You have successfully signed out of the application.</p>
 </header>
+
+<div>
+    <form id="StartContacts" method="get" action="~/Contacts/Display" style="vertical-align:baseline">
+        <div style="vertical-align:baseline; justify-content:flex-end">
+            <span class="no-narrow large-text" style="vertical-align:baseline"> just click to --> </span>
+            <button data-control-name="topcard_start" aria-pressed="false" aria-label="Start" id="start" class="btn" onclick="setContents(this, 'Working')">
+                <span>Restart</span>
+            </button>
+        </div>
+    </form>
+</div>
