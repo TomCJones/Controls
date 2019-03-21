@@ -40,7 +40,7 @@ namespace Controls.Areas.Contacts.Pages
         [BindProperty]
         public string ContactEmail { get; set; }
         [BindProperty]
-        public string Type { get; set; }
+        public string RelType { get; set; }
         [Required]
         [BindProperty]
         public string Relationship { get; set; }
@@ -66,6 +66,7 @@ namespace Controls.Areas.Contacts.Pages
             int time2expireInYears = 10;   //  TODO create a config file with this kind of data  --  should this be a float type?
             TimeSpan countYears = new TimeSpan(365, 5, 48, 46) * time2expireInYears; //365.2422 days per year
             Expiration = DateTime.Now + countYears;
+            RelType = "Personal";
 
             Username = userName;  //  just for display on web page
             UserID = userID;
@@ -100,7 +101,7 @@ namespace Controls.Areas.Contacts.Pages
             contactLink.Creation = DateTime.Now;
             contactLink.LastUsed = DateTime.Now;
             contactLink.Expires = Expiration;
-            contactLink.Type = Type;
+            contactLink.Type = RelType;
             contactLink.Relationship = Relationship;
             contactLink.GivenNames = GivenNames;
             contactLink.FamilyName = FamilyNames;
@@ -110,14 +111,14 @@ namespace Controls.Areas.Contacts.Pages
             try
             {
                 _context.contactLinks.Add(contactLink);
-                await _context.SaveChangesAsync(); //  do we need to check result here and throw if failed?
+                await _context.SaveChangesAsync(); 
             }
             catch
             {
                 throw new SystemException("could not create contact");   // TODO duplicates or write errors should not happen - but we should deal with them in a more friendly way if they do
             } 
 
-            return RedirectToPage("./Index");  //  TODO make it possible to redirect to the page that brought us here
+            return RedirectToPage("./Display");  //  TODO make it possible to redirect to the page that brought us here
         }
     }
 }

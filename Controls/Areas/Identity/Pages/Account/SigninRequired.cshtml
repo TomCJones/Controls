@@ -3,12 +3,12 @@
 @{
 }
 <div class="form-group">
-    <form method="get" action="~/Identity/Account/Login">
+    <form method="get" action="~/Identity/Account/Login?Contacts/Display">
         <h1 class="text-danger">@ViewData["Title"]</h1>
         <p class="text-danger">You must be signed into a registered account to change or remove data.</p>
         <p>All user information controlled by this site is associated with registered accounts.</p>
-        <button id="redirect-signin" type="submit" formaction="~/Identity/Account/Login" class="btn btn-link">Click to sign in</button>
+        <button id="redirect-signin" type="submit" class="btn btn-link">Click to sign in</button>
         <p>This site is designed to collect emergency contact information. We will not collect any information from you until you have provided a means
-        for use to contact you for recovery or redress of grievance. That requires that we have a means to send you an email or text message.</p>
+        for us to contact you for recovery or redress of grievance. That requires that we have a means to send you an email or text message.</p>
     </form>
 </div>

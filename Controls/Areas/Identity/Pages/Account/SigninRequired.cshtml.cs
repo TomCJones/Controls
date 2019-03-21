@@ -9,12 +9,19 @@ namespace Controls.Areas.Identity.Pages.Account
 {
     public class SigninRequiredModel : PageModel
     {
+        [BindProperty]
+        public string Redir { get; set; }
+
         public void OnGet()
         {
-            var req = HttpContext.Request;
-            var foo = req.ReadFormAsync();
-            string bar = foo.ToString();
-            string zingo = bar;
+            var reqQuery = HttpContext.Request.Query;
+            Redir = null;
+            if (reqQuery != null)
+            {
+                string redir = reqQuery.FirstOrDefault().Key;
+                Redir = redir;
+            }
+
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Controls.Areas.Contacts.Pages
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return LocalRedirect("/Identity/Account/Manage/signinrequired");
+                return LocalRedirect("/Identity/Account/Manage/signinrequired?Contacts/Display");
             }
 
             var userName = await _userManager.GetUserNameAsync(user);
@@ -162,6 +162,7 @@ namespace Controls.Areas.Contacts.Pages
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            return NotFound($"Send verification email is not yet implementsd");   //  TODO  --  remove this - fix email
 
             var userId = await _userManager.GetUserIdAsync(user);
             var email = await _userManager.GetEmailAsync(user);
@@ -171,7 +172,7 @@ namespace Controls.Areas.Contacts.Pages
                 pageHandler: null,
                 values: new { userId = userId, code = code },
                 protocol: Request.Scheme);
-            await _emailSender.SendEmailAsync(
+            await _emailSender.SendEmailAsync(                                    // TODO  -- enable email
                 email,
                 "Confirm your email",
                 $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");

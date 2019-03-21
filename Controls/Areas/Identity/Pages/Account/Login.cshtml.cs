@@ -30,6 +30,7 @@ namespace Controls.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
+        [BindProperty]
         public string ReturnUrl { get; set; }
 
         [TempData]
@@ -55,7 +56,13 @@ namespace Controls.Areas.Identity.Pages.Account
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
-
+            // if a query parameter exists
+            string referer = HttpContext.Request.Headers["Referer"];
+            int cQuery = referer.IndexOf('?');
+            if (cQuery > -1)
+            {
+                returnUrl = "~/" + referer.Substring(cQuery + 1);
+            }
             returnUrl = returnUrl ?? Url.Content("~/");
 
             // Clear the existing external cookie to ensure a clean login process

@@ -10,15 +10,15 @@
     <div class="col-md-6 col-md-offset-2">
         <section>
             <h4>Preferred identification providers.</h4>
-            <p>These providers all can autenticate the user as the owner of the user information stored on this site.</p>
+            <p>These providers all can autenticate the user as the owner of the user information stored on this site using the user identifier (or email address) from that provider.</p>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support signing in via external services.
+                            There are no external authentication providers configured. Ask the site administrator 
+                            for details on setting up this site to support signing in via external providers.
                         </p>
                     </div>
                 }
@@ -42,7 +42,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h4>Use a local account to sign in.</h4>
+                <h4>Use a local account to sign in (not common).</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -71,7 +71,7 @@
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register a new local user account</a>
                     </p>
                 </div>
             </form>
