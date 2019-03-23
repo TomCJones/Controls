@@ -71,7 +71,7 @@ namespace Controls.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information.";
+                ErrorMessage = "Error loading external sign in information.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -79,7 +79,7 @@ namespace Controls.Areas.Identity.Pages.Account
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
             if (result.Succeeded)
             {
-                _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
+                _logger.LogInformation("{Name} signed in with {LoginProvider} provider. Redirect to {returnURL}.", info.Principal.Identity.Name, info.LoginProvider, returnUrl);
                 return LocalRedirect(returnUrl);
             }
             if (result.IsLockedOut)
@@ -88,7 +88,7 @@ namespace Controls.Areas.Identity.Pages.Account
             }
             else
             {
-                // If the user does not have an account, then ask the user to create an account.
+                // If the user does not have an UserObject in the db, then ask the user to create an account.
                 ReturnUrl = returnUrl;
                 LoginProvider = info.LoginProvider;
                 if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
@@ -109,7 +109,7 @@ namespace Controls.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information during confirmation.";
+                ErrorMessage = "Error loading external signin information during confirmation.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -123,7 +123,7 @@ namespace Controls.Areas.Identity.Pages.Account
                     if (result.Succeeded)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+                        _logger.LogInformation("User created a UserObject using {Name} provider.", info.LoginProvider);
                         return LocalRedirect(returnUrl);
                     }
                 }

@@ -58,10 +58,17 @@ namespace Controls.Areas.Identity.Pages.Account
             }
             // if a query parameter exists
             string referer = HttpContext.Request.Headers["Referer"];
-            int cQuery = referer.IndexOf('?');
-            if (cQuery > -1)
+            if (referer == null)
             {
-                returnUrl = "~/" + referer.Substring(cQuery + 1);
+                returnUrl = null;
+            }
+            else
+            {
+                int cQuery = referer.IndexOf('?');
+                if (cQuery > -1)
+                {
+                    returnUrl = "~/" + referer.Substring(cQuery + 1);
+                }
             }
             returnUrl = returnUrl ?? Url.Content("~/");
 
