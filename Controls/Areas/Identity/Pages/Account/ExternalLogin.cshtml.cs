@@ -80,7 +80,13 @@ namespace Controls.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} signed in with {LoginProvider} provider. Redirect to {returnURL}.", info.Principal.Identity.Name, info.LoginProvider, returnUrl);
-                return LocalRedirect(returnUrl);
+                var contex = HttpContext.Request.Headers["User-Agent"];
+                string uas = contex.FirstOrDefault<string>();
+                if (!uas.Contains("Windows"))   // perhaps the android could be excluded, but that might not be true forever (which might be the case with windows as well)
+                {
+                    return Redirect("~/");   // this will take the user to the home page without authenication cookie, but on clicking "start" the user acquires the authen cookie
+                }
+                return Redirect(returnUrl);
             }
             if (result.IsLockedOut)
             {
@@ -98,7 +104,7 @@ namespace Controls.Areas.Identity.Pages.Account
                         Email = info.Principal.FindFirstValue(ClaimTypes.Email)
                     };
                 }
-                return Page();
+                return Page();    // TODO why doesn't this use returnURL??
             }
         }
 
