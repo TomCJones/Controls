@@ -61,6 +61,7 @@ namespace Controls.Areas.Contacts.Pages
             public string gName;
             public string cEmail;
             public string cPhone;
+            public string cId;
         }
         public List<DisplayContact> displayContacts {get; set;}
     
@@ -102,6 +103,7 @@ namespace Controls.Areas.Contacts.Pages
                     dc.cPhone = cl.Phones;
                     dc.fName = cl.FamilyName;
                     dc.gName = cl.GivenNames;
+                    dc.cId = cl.Id;
                     displayContacts.Add(dc);
                 }
             }

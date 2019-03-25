@@ -65,7 +65,7 @@ namespace Controls.Areas.Contacts.Pages
             var userID = await _userManager.GetUserIdAsync(user);
             int time2expireInYears = 10;   //  TODO create a config file with this kind of data  --  should this be a float type?
             TimeSpan countYears = new TimeSpan(365, 5, 48, 46) * time2expireInYears; //365.2422 days per year
-            Expiration = DateTime.Now + countYears;
+            Expiration = DateTime.UtcNow + countYears;
             RelType = "Personal";
 
             Username = userName;  //  just for display on web page
@@ -98,8 +98,8 @@ namespace Controls.Areas.Contacts.Pages
             ContactLink contactLink = new ContactLink();
             contactLink.Parent = UserID;   // there is an edge case not covered if the user is deleted between get and post - even if it were valid now, the same could occur later as well - TODO need to handle that anyway
             contactLink.Child = contact.Id; // contact.Id;
-            contactLink.Creation = DateTime.Now;
-            contactLink.LastUsed = DateTime.Now;
+            contactLink.Creation = DateTime.UtcNow;
+            contactLink.LastUsed = DateTime.UtcNow;
             contactLink.Expires = Expiration;
             contactLink.Type = RelType;
             contactLink.Relationship = Relationship;

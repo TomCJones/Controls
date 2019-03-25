@@ -86,7 +86,7 @@ namespace Controls.Areas.Identity.Pages.Account
                 {
                     return Redirect("~/");   // this will take the user to the home page without authenication cookie, but on clicking "start" the user acquires the authen cookie
                 }
-                return Redirect(returnUrl);
+                return Redirect(returnUrl);   // this is the nicest UX, but doesn't work if same-site cookies are strictly enforced
             }
             if (result.IsLockedOut)
             {
