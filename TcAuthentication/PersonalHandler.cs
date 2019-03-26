@@ -16,9 +16,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
+using TcAuthentication.IdentifierModel;
 
 namespace Microsoft.AspNetCore.Authentication.Personal
 {
@@ -33,7 +33,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
         private static readonly RandomNumberGenerator CryptoRandom = RandomNumberGenerator.Create();
 
-        private OpenIdConnectConfiguration _configuration;
+        private PersonalConfiguration _configuration;
 
         protected HttpClient Backchannel => Options.Backchannel;
 
@@ -261,14 +261,14 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// <returns>A task executing the callback procedure</returns>
         protected async virtual Task<bool> HandleSignOutCallbackAsync()
         {
-            /*
+            
             var message = new OpenIdConnectMessage(Request.Query.Select(pair => new KeyValuePair<string, string[]>(pair.Key, pair.Value)));
             AuthenticationProperties properties = null;
             if (!string.IsNullOrEmpty(message.State))
             {
                 properties = Options.StateDataFormat.Unprotect(message.State);
             }
-
+/*
             var signOut = new RemoteSignOutContext(Context, Scheme, Options, message)
             {
                 Properties = properties,

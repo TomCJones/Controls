@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication.Internal;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Protocols;
-using Microsoft.IdentityModel.Protocols.Personal;
+using TcAuthentication.IdentifierModel;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Microsoft.AspNetCore.Authentication.Personal
@@ -215,12 +215,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// <summary>
         /// Gets or sets the 'response_mode'.
         /// </summary>
-//        public string ResponseMode { get; set; } = PersonalResponseMode.FormPost;
+        public string ResponseMode { get; set; } = "FormPost";  // PersonalResponseMode.FormPost;
 
         /// <summary>
         /// Gets or sets the 'response_type'.
         /// </summary>
- //       public string ResponseType { get; set; } = PersonalResponseType.IdToken;
+        public string ResponseType { get; set; } = "IdToken"; // PersonalResponseType.IdToken;
 
         /// <summary>
         /// Gets or sets the 'prompt'.

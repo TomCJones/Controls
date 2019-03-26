@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols;
-using Microsoft.IdentityModel.Protocols.Personal;
+using TcAuthentication.IdentifierModel;
 
 namespace Microsoft.AspNetCore.Authentication.Personal
 {

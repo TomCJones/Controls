@@ -49,7 +49,7 @@ namespace Controls
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddAuthentication()    // TODO this was added to overcome iOS 12 same site problem - try to get a better solution in the future
+            services.AddAuthentication()    // TODO this was added to overcome iOS 12 same site problem - I tried to remove it, but could not
                 .Services.ConfigureExternalCookie(opt => 
                 { opt.Cookie = new CookieBuilder { SameSite = SameSiteMode.None }; });
         }

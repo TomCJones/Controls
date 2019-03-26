@@ -1,0 +1,637 @@
+﻿// PersonalConfiguration.cs Copyright (c) tomjones.ususing System;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+
+namespace TcAuthentication.IdentifierModel
+{
+    /// <summary>
+    /// Contains Personal configuration that can be populated from a json string.
+    /// </summary>
+    [JsonObject]
+    public class PersonalConfiguration
+    {
+        /// <summary>
+        /// Deserializes the json string into an <see cref="PersonalConfiguration"/> object.
+        /// </summary>
+        /// <param name="json">json string representing the configuration.</param>
+        /// <returns><see cref="PersonalConfiguration"/> object representing the configuration.</returns>
+        /// <exception cref="ArgumentNullException">If 'json' is null or empty.</exception>
+        /// <exception cref="ArgumentException">If 'json' fails to deserialize.</exception>
+        public static PersonalConfiguration Create(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+                throw LogHelper.LogArgumentNullException(nameof(json));
+
+            LogHelper.LogVerbose(LogMessages.IDX21808, json);
+            return new PersonalConfiguration(json);
+        }
+
+        /// <summary>
+        /// Serializes the <see cref="PersonalConfiguration"/> object to a json string.
+        /// </summary>
+        /// <param name="configuration"><see cref="PersonalConfiguration"/> object to serialize.</param>
+        /// <returns>json string representing the configuration object.</returns>
+        /// <exception cref="ArgumentNullException">If 'configuration' is null.</exception>
+        public static string Write(PersonalConfiguration configuration)
+        {
+            if (configuration == null)
+                throw LogHelper.LogArgumentNullException(nameof(configuration));
+
+            LogHelper.LogVerbose(LogMessages.IDX21809);
+            return JsonConvert.SerializeObject(configuration);
+        }
+
+        /// <summary>
+        /// Initializes an new instance of <see cref="PersonalConfiguration"/>.
+        /// </summary>
+        public PersonalConfiguration()
+        {
+        }
+
+        /// <summary>
+        /// Initializes an new instance of <see cref="PersonalConfiguration"/> from a json string.
+        /// </summary>
+        /// <param name="json">a json string containing the metadata</param>
+        /// <exception cref="ArgumentNullException">If 'json' is null or empty.</exception>
+        public PersonalConfiguration(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+                throw LogHelper.LogArgumentNullException(nameof(json));
+
+            try
+            {
+                LogHelper.LogVerbose(LogMessages.IDX21806, json, this);
+                JsonConvert.PopulateObject(json, this);
+            }
+            catch (Exception ex)
+            {
+                throw LogHelper.LogExceptionMessage(new ArgumentException(LogHelper.FormatInvariant(LogMessages.IDX21815, json, GetType()), ex));
+            }
+        }
+
+        /// <summary>
+        /// When deserializing from JSON any properties that are not defined will be placed here.
+        /// </summary>
+        [JsonExtensionData]
+        public virtual IDictionary<string, object> AdditionalData { get; } = new Dictionary<string, object>();
+
+        /// <summary>
+        /// Gets the collection of 'acr_values_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.AcrValuesSupported, Required = Required.Default)]
+        public ICollection<string> AcrValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'authorization_endpoint'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.AuthorizationEndpoint, Required = Required.Default)]
+        public string AuthorizationEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'check_session_iframe'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.CheckSessionIframe, Required = Required.Default)]
+        public string CheckSessionIframe { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'claims_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ClaimsSupported, Required = Required.Default)]
+        public ICollection<string> ClaimsSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'claims_locales_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ClaimsLocalesSupported, Required = Required.Default)]
+        public ICollection<string> ClaimsLocalesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'claims_parameter_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ClaimsParameterSupported, Required = Required.Default)]
+        public bool ClaimsParameterSupported { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'claim_types_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ClaimTypesSupported, Required = Required.Default)]
+        public ICollection<string> ClaimTypesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'display_values_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.DisplayValuesSupported, Required = Required.Default)]
+        public ICollection<string> DisplayValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'end_session_endpoint'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.EndSessionEndpoint, Required = Required.Default)]
+        public string EndSessionEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'frontchannel_logout_session_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.FrontchannelLogoutSessionSupported, Required = Required.Default)]
+        public string FrontchannelLogoutSessionSupported { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'frontchannel_logout_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.FrontchannelLogoutSupported, Required = Required.Default)]
+        public string FrontchannelLogoutSupported { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'grant_types_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.GrantTypesSupported, Required = Required.Default)]
+        public ICollection<string> GrantTypesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Boolean value specifying whether the OP supports HTTP-based logout. Default is false.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.HttpLogoutSupported, Required = Required.Default)]
+        public bool HttpLogoutSupported { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'id_token_encryption_alg_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.IdTokenEncryptionAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> IdTokenEncryptionAlgValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'id_token_encryption_enc_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.IdTokenEncryptionEncValuesSupported, Required = Required.Default)]
+        public ICollection<string> IdTokenEncryptionEncValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'id_token_signing_alg_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.IdTokenSigningAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> IdTokenSigningAlgValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'issuer'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.Issuer, Required = Required.Default)]
+        public string Issuer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'jwks_uri'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.JwksUri, Required = Required.Default)]
+        public string JwksUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="JsonWebKeySet"/>
+        /// </summary>
+        public JsonWebKeySet JsonWebKeySet { get; set; }
+
+        /// <summary>
+        /// Boolean value specifying whether the OP can pass a sid (session ID) query parameter to identify the RP session at the OP when the logout_uri is used. Dafault Value is false.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.LogoutSessionSupported, Required = Required.Default)]
+        public bool LogoutSessionSupported { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'op_policy_uri'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.OpPolicyUri, Required = Required.Default)]
+        public string OpPolicyUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'op_tos_uri'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.OpTosUri, Required = Required.Default)]
+        public string OpTosUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'registration_endpoint'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RegistrationEndpoint, Required = Required.Default)]
+        public string RegistrationEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'request_object_encryption_alg_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RequestObjectEncryptionAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> RequestObjectEncryptionAlgValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'request_object_encryption_enc_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RequestObjectEncryptionEncValuesSupported, Required = Required.Default)]
+        public ICollection<string> RequestObjectEncryptionEncValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'request_object_signing_alg_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RequestObjectSigningAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> RequestObjectSigningAlgValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'request_parameter_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RequestParameterSupported, Required = Required.Default)]
+        public bool RequestParameterSupported { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'request_uri_parameter_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RequestUriParameterSupported, Required = Required.Default)]
+        public bool RequestUriParameterSupported { get; set; }
+
+        /// <summary>
+        /// Gets or sets the 'require_request_uri_registration'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.RequireRequestUriRegistration, Required = Required.Default)]
+        public bool RequireRequestUriRegistration { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'response_modes_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ResponseModesSupported, Required = Required.Default)]
+        public ICollection<string> ResponseModesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'response_types_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ResponseTypesSupported, Required = Required.Default)]
+        public ICollection<string> ResponseTypesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'service_documentation'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ServiceDocumentation, Required = Required.Default)]
+        public string ServiceDocumentation { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'scopes_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.ScopesSupported, Required = Required.Default)]
+        public ICollection<string> ScopesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the <see cref="ICollection{SecurityKey}"/> that the IdentityProvider indicates are to be used signing tokens.
+        /// </summary>
+        public ICollection<SecurityKey> SigningKeys { get; } = new Collection<SecurityKey>();
+
+        /// <summary>
+        /// Gets the collection of 'subject_types_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.SubjectTypesSupported, Required = Required.Default)]
+        public ICollection<string> SubjectTypesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'token_endpoint'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.TokenEndpoint, Required = Required.Default)]
+        public string TokenEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'token_endpoint_auth_methods_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.TokenEndpointAuthMethodsSupported, Required = Required.Default)]
+        public ICollection<string> TokenEndpointAuthMethodsSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'token_endpoint_auth_signing_alg_values_supported'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.TokenEndpointAuthSigningAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> TokenEndpointAuthSigningAlgValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'ui_locales_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.UILocalesSupported, Required = Required.Default)]
+        public ICollection<string> UILocalesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets or sets the 'user_info_endpoint'.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.UserInfoEndpoint, Required = Required.Default)]
+        public string UserInfoEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets the collection of 'userinfo_encryption_alg_values_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.UserInfoEncryptionAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> UserInfoEndpointEncryptionAlgValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'userinfo_encryption_enc_values_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.UserInfoEncryptionEncValuesSupported, Required = Required.Default)]
+        public ICollection<string> UserInfoEndpointEncryptionEncValuesSupported { get; } = new Collection<string>();
+
+        /// <summary>
+        /// Gets the collection of 'userinfo_signing_alg_values_supported'
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore, PropertyName = PersonalProviderMetadataNames.UserInfoSigningAlgValuesSupported, Required = Required.Default)]
+        public ICollection<string> UserInfoEndpointSigningAlgValuesSupported { get; } = new Collection<string>();
+
+        #region shouldserialize
+        /// <summary>
+        /// Gets a bool that determines if the 'acr_values_supported' (AcrValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'acr_values_supported' (AcrValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAcrValuesSupported()
+        {
+            return AcrValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'claims_supported' (ClaimsSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'claims_supported' (ClaimsSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeClaimsSupported()
+        {
+            return ClaimsSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'claims_locales_supported' (ClaimsLocalesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'claims_locales_supported' (ClaimsLocalesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeClaimsLocalesSupported()
+        {
+            return ClaimsLocalesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'claim_types_supported' (ClaimTypesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'claim_types_supported' (ClaimTypesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeClaimTypesSupported()
+        {
+            return ClaimTypesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'display_values_supported' (DisplayValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'display_values_supported' (DisplayValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisplayValuesSupported()
+        {
+            return DisplayValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'grant_types_supported' (GrantTypesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'grant_types_supported' (GrantTypesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeGrantTypesSupported()
+        {
+            return GrantTypesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'id_token_encryption_alg_values_supported' (IdTokenEncryptionAlgValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'id_token_encryption_alg_values_supported' (IdTokenEncryptionAlgValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIdTokenEncryptionAlgValuesSupported()
+        {
+            return IdTokenEncryptionAlgValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'id_token_encryption_enc_values_supported' (IdTokenEncryptionEncValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'id_token_encryption_enc_values_supported' (IdTokenEncryptionEncValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIdTokenEncryptionEncValuesSupported()
+        {
+            return IdTokenEncryptionEncValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'id_token_signing_alg_values_supported' (IdTokenSigningAlgValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'id_token_signing_alg_values_supported' (IdTokenSigningAlgValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIdTokenSigningAlgValuesSupported()
+        {
+            return IdTokenSigningAlgValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'request_object_encryption_alg_values_supported' (RequestObjectEncryptionAlgValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'request_object_encryption_alg_values_supported' (RequestObjectEncryptionAlgValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeRequestObjectEncryptionAlgValuesSupported()
+        {
+            return RequestObjectEncryptionAlgValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'request_object_encryption_enc_values_supported' (RequestObjectEncryptionEncValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'request_object_encryption_enc_values_supported' (RequestObjectEncryptionEncValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeRequestObjectEncryptionEncValuesSupported()
+        {
+            return RequestObjectEncryptionEncValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'request_object_signing_alg_values_supported' (RequestObjectSigningAlgValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'request_object_signing_alg_values_supported' (RequestObjectSigningAlgValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeRequestObjectSigningAlgValuesSupported()
+        {
+            return RequestObjectSigningAlgValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'response_modes_supported' (ResponseModesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'response_modes_supported' (ResponseModesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeResponseModesSupported()
+        {
+            return ResponseModesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'response_types_supported' (ResponseTypesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'response_types_supported' (ResponseTypesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeResponseTypesSupported()
+        {
+            return ResponseTypesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'scopes_supported' (ScopesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'scopes_supported' (ScopesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeScopesSupported()
+        {
+            return ScopesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'subject_types_supported' (SubjectTypesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'subject_types_supported' (SubjectTypesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeSubjectTypesSupported()
+        {
+            return SubjectTypesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'token_endpoint_auth_methods_supported' (TokenEndpointAuthMethodsSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'token_endpoint_auth_methods_supported' (TokenEndpointAuthMethodsSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeTokenEndpointAuthMethodsSupported()
+        {
+            return TokenEndpointAuthMethodsSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'token_endpoint_auth_signing_alg_values_supported' (TokenEndpointAuthSigningAlgValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'token_endpoint_auth_signing_alg_values_supported' (TokenEndpointAuthSigningAlgValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeTokenEndpointAuthSigningAlgValuesSupported()
+        {
+            return TokenEndpointAuthSigningAlgValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'ui_locales_supported' (UILocalesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'ui_locales_supported' (UILocalesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeUILocalesSupported()
+        {
+            return UILocalesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'userinfo_encryption_alg_values_supported' (UserInfoEndpointEncryptionAlgValuesSupported ) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'userinfo_encryption_alg_values_supported' (UserInfoEndpointEncryptionAlgValuesSupported ) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeUserInfoEndpointEncryptionAlgValuesSupported()
+        {
+            return UserInfoEndpointEncryptionAlgValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'userinfo_encryption_enc_values_supported' (UserInfoEndpointEncryptionEncValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'userinfo_encryption_enc_values_supported' (UserInfoEndpointEncryptionEncValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeUserInfoEndpointEncryptionEncValuesSupported()
+        {
+            return UserInfoEndpointEncryptionEncValuesSupported.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets a bool that determines if the 'userinfo_signing_alg_values_supported' (UserInfoEndpointSigningAlgValuesSupported) property should be serialized.
+        /// This is used by Json.NET in order to conditionally serialize properties.
+        /// </summary>
+        /// <return>true if 'userinfo_signing_alg_values_supported' (UserInfoEndpointSigningAlgValuesSupported) is not empty; otherwise, false.</return>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeUserInfoEndpointSigningAlgValuesSupported()
+        {
+            return UserInfoEndpointSigningAlgValuesSupported.Count > 0;
+        }
+
+        #endregion shouldserialize
+    }
+}
+
+/// <summary>
+/// PersonalProviderConfiguration Names
+/// http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata 
+/// </summary>
+public static class PersonalProviderMetadataNames
+{
+#pragma warning disable 1591
+    public const string AcrValuesSupported = "acr_values_supported";
+    public const string AuthorizationEndpoint = "authorization_endpoint";
+    public const string CheckSessionIframe = "check_session_iframe";
+    public const string ClaimsLocalesSupported = "claims_locales_supported";
+    public const string ClaimsParameterSupported = "claims_parameter_supported";
+    public const string ClaimsSupported = "claims_supported";
+    public const string ClaimTypesSupported = "claim_types_supported";
+    public const string Discovery = ".well-known/openid-configuration";
+    public const string DisplayValuesSupported = "display_values_supported";
+    public const string EndSessionEndpoint = "end_session_endpoint";
+    public const string FrontchannelLogoutSessionSupported = "frontchannel_logout_session_supported";
+    public const string FrontchannelLogoutSupported = "frontchannel_logout_supported";
+    public const string HttpLogoutSupported = "http_logout_supported";
+    public const string GrantTypesSupported = "grant_types_supported";
+    public const string IdTokenEncryptionAlgValuesSupported = "id_token_encryption_alg_values_supported";
+    public const string IdTokenEncryptionEncValuesSupported = "id_token_encryption_enc_values_supported";
+    public const string IdTokenSigningAlgValuesSupported = "id_token_signing_alg_values_supported";
+    public const string JwksUri = "jwks_uri";
+    public const string Issuer = "issuer";
+    public const string LogoutSessionSupported = "logout_session_supported";
+    public const string MicrosoftMultiRefreshToken = "microsoft_multi_refresh_token";
+    public const string OpPolicyUri = "op_policy_uri";
+    public const string OpTosUri = "op_tos_uri";
+    public const string RegistrationEndpoint = "registration_endpoint";
+    public const string RequestObjectEncryptionAlgValuesSupported = "request_object_encryption_alg_values_supported";
+    public const string RequestObjectEncryptionEncValuesSupported = "request_object_encryption_enc_values_supported";
+    public const string RequestObjectSigningAlgValuesSupported = "request_object_signing_alg_values_supported";
+    public const string RequestParameterSupported = "request_parameter_supported";
+    public const string RequestUriParameterSupported = "request_uri_parameter_supported";
+    public const string RequireRequestUriRegistration = "require_request_uri_registration";
+    public const string ResponseModesSupported = "response_modes_supported";
+    public const string ResponseTypesSupported = "response_types_supported";
+    public const string ServiceDocumentation = "service_documentation";
+    public const string ScopesSupported = "scopes_supported";
+    public const string SubjectTypesSupported = "subject_types_supported";
+    public const string TokenEndpoint = "token_endpoint";
+    public const string TokenEndpointAuthMethodsSupported = "token_endpoint_auth_methods_supported";
+    public const string TokenEndpointAuthSigningAlgValuesSupported = "token_endpoint_auth_signing_alg_values_supported";
+    public const string UILocalesSupported = "ui_locales_supported";
+    public const string UserInfoEndpoint = "userinfo_endpoint";
+    public const string UserInfoEncryptionAlgValuesSupported = "userinfo_encryption_alg_values_supported";
+    public const string UserInfoEncryptionEncValuesSupported = "userinfo_encryption_enc_values_supported";
+    public const string UserInfoSigningAlgValuesSupported = "userinfo_signing_alg_values_supported";
+#pragma warning restore 1591
+}
