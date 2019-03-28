@@ -14,7 +14,6 @@ using Controls.Data;
 using Controls.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication;
 
 namespace Controls
 {
@@ -41,7 +40,9 @@ namespace Controls
             string CId = Configuration["TCGoogleClientID"];
             string CSec = Configuration["TCGoogleSecret"];
             services.AddAuthentication()
-                .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; o.CorrelationCookie.SameSite = SameSiteMode.None; });  // same site fix
+                .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; o.CorrelationCookie.SameSite = SameSiteMode.None; })  // same site fix
+                .AddPersonal(o => { o.ClientId = "IDESG2rp"; o.ClientSecret = "bazzfazz";
+                    o.Authority = "https://idesg-idp.azurewebsites.net"; });
             //                .AddAuthenticationCore(IServiceCollection coreService, Action<AuthenticationOptions> coreConfig);
             // need these services for account recovery or two factor authentication
             services.AddTransient<IEmailSender, ControlsEmailSender>();

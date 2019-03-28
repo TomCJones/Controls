@@ -28,4 +28,9 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\TcAuthentication\TcAuthentication.csproj" />
+  </ItemGroup>
+
 </Project>
