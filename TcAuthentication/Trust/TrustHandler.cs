@@ -1,4 +1,4 @@
-﻿// PersonalHandler.cs Copyright (c) tomjones.us
+﻿// TrustHandler.cs Copyright (c) tomjones.us derived from .NET foundation
 
 using System;
 using System.Collections.Generic;
@@ -19,13 +19,14 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using TcAuthentication.IdentifierModel;
+using TcAuthentication.Logging;
 
-namespace Microsoft.AspNetCore.Authentication.Personal
+namespace Microsoft.AspNetCore.Authentication.Trust
 {
     /// <summary>
-    /// A per-request authentication handler for the PersonalAuthenticationMiddleware.
+    /// A per-request authentication handler for the TrustAuthenticationMiddleware.
     /// </summary>
-    public class PersonalHandler : RemoteAuthenticationHandler<PersonalOptions>, IAuthenticationSignOutHandler
+    public class TrustHandler : RemoteAuthenticationHandler<TrustOptions>, IAuthenticationSignOutHandler
     {
         private const string NonceProperty = "N";
 
@@ -33,13 +34,13 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
         private static readonly RandomNumberGenerator CryptoRandom = RandomNumberGenerator.Create();
 
-        private PersonalConfiguration _configuration;
+        private TrustConfiguration _configuration;
 
         protected HttpClient Backchannel => Options.Backchannel;
 
         protected HtmlEncoder HtmlEncoder { get; }
 
-        public PersonalHandler(IOptionsMonitor<PersonalOptions> options, ILoggerFactory logger, HtmlEncoder htmlEncoder, UrlEncoder encoder, ISystemClock clock)
+        public TrustHandler(IOptionsMonitor<TrustOptions> options, ILoggerFactory logger, HtmlEncoder htmlEncoder, UrlEncoder encoder, ISystemClock clock)
             : base(options, logger, encoder, clock)
         {
             HtmlEncoder = htmlEncoder;
@@ -50,13 +51,13 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// If it is not provided a default instance is supplied which does nothing when the methods are called.
         /// </summary>
         /*
-        protected new PersonalEvents Events
+        protected new TrustEvents Events
         {
-            get { return (PersonalEvents)base.Events; }
+            get { return (TrustEvents)base.Events; }
             set { base.Events = value; }
         }
 
-        protected override Task<object> CreateEventsAsync() => Task.FromResult<object>(new PersonalEvents());
+        protected override Task<object> CreateEventsAsync() => Task.FromResult<object>(new TrustEvents());
         */
         public override Task<bool> HandleRequestAsync()
         {
@@ -212,7 +213,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             */
             if (!string.IsNullOrEmpty(message.State))
             {
-                properties.Items[PersonalDefaults.UserstatePropertiesKey] = message.State;
+                properties.Items[TrustDefaults.UserstatePropertiesKey] = message.State;
             }
 
             message.State = Options.StateDataFormat.Protect(properties);
@@ -222,7 +223,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 throw new InvalidOperationException("Cannot redirect to the end session endpoint, the configuration may be missing or invalid.");
             }
 
-            if (Options.AuthenticationMethod == PersonalRedirectBehavior.RedirectGet)
+            if (Options.AuthenticationMethod == TrustRedirectBehavior.RedirectGet)
             {
                 var redirectUri = message.CreateLogoutRequestUrl();
                 if (!Uri.IsWellFormedUriString(redirectUri, UriKind.Absolute))
@@ -232,7 +233,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
                 Response.Redirect(redirectUri);
             }
-            else if (Options.AuthenticationMethod == PersonalRedirectBehavior.FormPost)
+            else if (Options.AuthenticationMethod == TrustRedirectBehavior.FormPost)
             {
                 var content = message.BuildFormPost();
                 var buffer = Encoding.UTF8.GetBytes(content);
@@ -304,7 +305,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         }
 
         /// <summary>
-        /// Responds to a 401 Challenge. Sends an Personal message to the 'identity authority' to obtain an identity.
+        /// Responds to a 401 Challenge. Sends an Trust message to the 'identity authority' to obtain an identity.
         /// </summary>
         /// <returns></returns>
         protected override async Task HandleChallengeAsync(AuthenticationProperties properties)
@@ -336,12 +337,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 Scope = "openid",
                 Nonce = "OS6_WzA2Mj",
                 State = "af0ifjsldky  HTTP/1.1"  //  I added these to get the ball rolling
-//                Prompt = properties.GetParameter<string>(PersonalParameterNames.Prompt) ?? Options.Prompt,
+//                Prompt = properties.GetParameter<string>(TrustParameterNames.Prompt) ?? Options.Prompt,
             };
 
             // Add the 'max_age' parameter to the authentication request if MaxAge is not null.
             // See http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
-            /*            var maxAge = properties.GetParameter<TimeSpan?>(PersonalParameterNames.MaxAge) ?? Options.MaxAge;
+            /*            var maxAge = properties.GetParameter<TimeSpan?>(TrustParameterNames.MaxAge) ?? Options.MaxAge;
                         if (maxAge.HasValue)
                         {
                             message.MaxAge = Convert.ToInt64(Math.Floor((maxAge.Value).TotalSeconds))
@@ -351,8 +352,8 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                         // Omitting the response_mode parameter when it already corresponds to the default
                         // response_mode used for the specified response_type is recommended by the specifications.
                         // See http://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes
-                        if (!string.Equals(Options.ResponseType, PersonalResponseType.Code, StringComparison.Ordinal) ||
-                            !string.Equals(Options.ResponseMode, PersonalResponseMode.Query, StringComparison.Ordinal))
+                        if (!string.Equals(Options.ResponseType, TrustResponseType.Code, StringComparison.Ordinal) ||
+                            !string.Equals(Options.ResponseMode, TrustResponseMode.Query, StringComparison.Ordinal))
                         {
                             message.ResponseMode = Options.ResponseMode;
                         }
@@ -381,11 +382,11 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                         */
             if (!string.IsNullOrEmpty(message.State))
             {
-                properties.Items[PersonalDefaults.UserstatePropertiesKey] = message.State;
+                properties.Items[TrustDefaults.UserstatePropertiesKey] = message.State;
             }
 
             // When redeeming a 'code' for an AccessToken, this value is needed
-            properties.Items.Add(PersonalDefaults.RedirectUriForCodePropertiesKey, message.RedirectUri);
+            properties.Items.Add(TrustDefaults.RedirectUriForCodePropertiesKey, message.RedirectUri);
 
             message.State = Options.StateDataFormat.Protect(properties);
 
@@ -395,7 +396,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     "Cannot redirect to the authorization endpoint, the configuration may be missing or invalid.");
             }
 
-            if (Options.AuthenticationMethod == PersonalRedirectBehavior.RedirectGet)
+            if (Options.AuthenticationMethod == TrustRedirectBehavior.RedirectGet)
             {
                 var redirectUri = message.CreateAuthenticationRequestUrl();
                 if (!Uri.IsWellFormedUriString(redirectUri, UriKind.Absolute))
@@ -406,7 +407,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 Response.Redirect(redirectUri);
                 return;
             }
-            else if (Options.AuthenticationMethod == PersonalRedirectBehavior.FormPost)
+            else if (Options.AuthenticationMethod == TrustRedirectBehavior.FormPost)
             {
                 var content = message.BuildFormPost();
                 var buffer = Encoding.UTF8.GetBytes(content);
@@ -427,7 +428,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         }
 
         /// <summary>
-        /// Invoked to process incoming Personal messages.
+        /// Invoked to process incoming Trust messages.
         /// </summary>
         /// <returns>An <see cref="HandleRequestResult"/>.</returns>
         protected override async Task<HandleRequestResult> HandleRemoteAuthenticateAsync()
@@ -475,7 +476,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 return HandleRequestResult.Fail("No message.");
             }
 
-            return HandleRequestResult.Fail("No message.");    /// TEMP  TODO remove this
+            return HandleRequestResult.Fail("Not implemented yet.");    /// TEMP  TODO remove this  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
             /*
             AuthenticationProperties properties = null;
             try
@@ -538,7 +539,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                         return await HandleAccessDeniedErrorAsync(properties);
                     }
 
-                    return HandleRequestResult.Fail(CreatePersonalProtocolException(authorizationResponse, response: null), properties);
+                    return HandleRequestResult.Fail(CreateTrustProtocolException(authorizationResponse, response: null), properties);
                 }
 
                 if (_configuration == null && Options.ConfigurationManager != null)
@@ -578,7 +579,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     nonce = tokenValidatedContext.Nonce;
                 }
 
-                Options.ProtocolValidator.ValidateAuthenticationResponse(new PersonalProtocolValidationContext()
+                Options.ProtocolValidator.ValidateAuthenticationResponse(new TrustProtocolValidationContext()
                 {
                     ClientId = Options.ClientId,
                     ProtocolMessage = authorizationResponse,
@@ -662,7 +663,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     // Validate the token response if it wasn't provided manually
                     if (!authorizationCodeReceivedContext.HandledCodeRedemption)
                     {
-                        Options.ProtocolValidator.ValidateTokenResponse(new PersonalProtocolValidationContext()
+                        Options.ProtocolValidator.ValidateTokenResponse(new TrustProtocolValidationContext()
                         {
                             ClientId = Options.ClientId,
                             ProtocolMessage = tokenEndpointResponse,
@@ -728,7 +729,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 if (properties != null)
                 {
                     // If properties can be decoded from state, clear the message state.
-                    properties.Items.TryGetValue(PersonalDefaults.UserstatePropertiesKey, out var userstate);
+                    properties.Items.TryGetValue(TrustDefaults.UserstatePropertiesKey, out var userstate);
                     message.State = userstate;
                 }
             }
@@ -740,12 +741,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             /*
             if (!string.IsNullOrEmpty(message.SessionState))
             {
-                properties.Items[PersonalSessionProperties.SessionState] = message.SessionState;
+                properties.Items[TrustSessionProperties.SessionState] = message.SessionState;
             }
 
             if (!string.IsNullOrEmpty(_configuration.CheckSessionIframe))
             {
-                properties.Items[PersonalSessionProperties.CheckSessionIFrame] = _configuration.CheckSessionIframe;
+                properties.Items[TrustSessionProperties.CheckSessionIFrame] = _configuration.CheckSessionIframe;
             }
             */
         }
@@ -754,7 +755,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// Redeems the authorization code for tokens at the token endpoint.
         /// </summary>
         /// <param name="tokenEndpointRequest">The request that will be sent to the token endpoint and is available for customization.</param>
-        /// <returns>Personal message that has tokens inside it.</returns>
+        /// <returns>Trust message that has tokens inside it.</returns>
         protected virtual async Task<OpenIdConnectMessage> RedeemAuthorizationCodeAsync(OpenIdConnectMessage tokenEndpointRequest)
         {
             Logger.RedeemingCodeForTokens();
@@ -776,7 +777,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             // Error handling:
             // 1. If the response body can't be parsed as json, throws.
-            // 2. If the response's status code is not in 2XX range, throw PersonalProtocolException. If the body is correct parsed,
+            // 2. If the response's status code is not in 2XX range, throw TrustProtocolException. If the body is correct parsed,
             //    pass the error information from body to the exception.
             OpenIdConnectMessage message;
  //           try
@@ -786,12 +787,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
  //           }
 //            catch (Exception ex)
  //           {
- //               throw new PersonalProtocolException($"Failed to parse token response body as JSON. Status Code: {(int)responseMessage.StatusCode}. Content-Type: {responseMessage.Content.Headers.ContentType}", ex);
+ //               throw new TrustProtocolException($"Failed to parse token response body as JSON. Status Code: {(int)responseMessage.StatusCode}. Content-Type: {responseMessage.Content.Headers.ContentType}", ex);
  //           }
 
             if (!responseMessage.IsSuccessStatusCode)
             {
-//                throw CreatePersonalProtocolException(message, responseMessage);
+//                throw CreateTrustProtocolException(message, responseMessage);
             }
 
             return message;
@@ -853,7 +854,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
  //           properties = userInformationReceivedContext.Properties;
             user = userInformationReceivedContext.User;
             
-            Options.ProtocolValidator.ValidateUserInfoResponse(new PersonalProtocolValidationContext()
+            Options.ProtocolValidator.ValidateUserInfoResponse(new TrustProtocolValidationContext()
             {
                 UserInfoEndpointResponse = userInfoResponse,
                 ValidatedIdToken = jwt,
@@ -880,22 +881,22 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             /*
             if (!string.IsNullOrEmpty(message.AccessToken))
             {
-                tokens.Add(new AuthenticationToken { Name = PersonalParameterNames.AccessToken, Value = message.AccessToken });
+                tokens.Add(new AuthenticationToken { Name = TrustParameterNames.AccessToken, Value = message.AccessToken });
             }
 
             if (!string.IsNullOrEmpty(message.IdToken))
             {
-                tokens.Add(new AuthenticationToken { Name = PersonalParameterNames.IdToken, Value = message.IdToken });
+                tokens.Add(new AuthenticationToken { Name = TrustParameterNames.IdToken, Value = message.IdToken });
             }
 
             if (!string.IsNullOrEmpty(message.RefreshToken))
             {
-                tokens.Add(new AuthenticationToken { Name = PersonalParameterNames.RefreshToken, Value = message.RefreshToken });
+                tokens.Add(new AuthenticationToken { Name = TrustParameterNames.RefreshToken, Value = message.RefreshToken });
             }
 
             if (!string.IsNullOrEmpty(message.TokenType))
             {
-                tokens.Add(new AuthenticationToken { Name = PersonalParameterNames.TokenType, Value = message.TokenType });
+                tokens.Add(new AuthenticationToken { Name = TrustParameterNames.TokenType, Value = message.TokenType });
             }
 
             if (!string.IsNullOrEmpty(message.ExpiresIn))
@@ -916,7 +917,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// Adds the nonce to <see cref="HttpResponse.Cookies"/>.
         /// </summary>
         /// <param name="nonce">the nonce to remember.</param>
-        /// <remarks><see cref="M:IResponseCookies.Append"/> of <see cref="HttpResponse.Cookies"/> is called to add a cookie with the name: 'PersonalAuthenticationDefaults.Nonce + <see cref="M:ISecureDataFormat{TData}.Protect"/>(nonce)' of <see cref="PersonalOptions.StringDataFormat"/>.
+        /// <remarks><see cref="M:IResponseCookies.Append"/> of <see cref="HttpResponse.Cookies"/> is called to add a cookie with the name: 'TrustAuthenticationDefaults.Nonce + <see cref="M:ISecureDataFormat{TData}.Protect"/>(nonce)' of <see cref="TrustOptions.StringDataFormat"/>.
         /// The value of the cookie is: "N".</remarks>
         private void WriteNonceCookie(string nonce)
         {
@@ -938,8 +939,8 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// </summary>
         /// <param name="nonce">the nonce that we are looking for.</param>
         /// <returns>echos 'nonce' if a cookie is found that matches, null otherwise.</returns>
-        /// <remarks>Examine <see cref="IRequestCookieCollection.Keys"/> of <see cref="HttpRequest.Cookies"/> that start with the prefix: 'PersonalAuthenticationDefaults.Nonce'.
-        /// <see cref="M:ISecureDataFormat{TData}.Unprotect"/> of <see cref="PersonalOptions.StringDataFormat"/> is used to obtain the actual 'nonce'. If the nonce is found, then <see cref="M:IResponseCookies.Delete"/> of <see cref="HttpResponse.Cookies"/> is called.</remarks>
+        /// <remarks>Examine <see cref="IRequestCookieCollection.Keys"/> of <see cref="HttpRequest.Cookies"/> that start with the prefix: 'TrustAuthenticationDefaults.Nonce'.
+        /// <see cref="M:ISecureDataFormat{TData}.Unprotect"/> of <see cref="TrustOptions.StringDataFormat"/> is used to obtain the actual 'nonce'. If the nonce is found, then <see cref="M:IResponseCookies.Delete"/> of <see cref="HttpResponse.Cookies"/> is called.</remarks>
         private string ReadNonceCookie(string nonce)
         {
             if (nonce == null)
@@ -973,14 +974,14 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
         private AuthenticationProperties GetPropertiesFromState(string state)
         {
-            // assume a well formed query string: <a=b&>PersonalAuthenticationDefaults.AuthenticationPropertiesKey=kasjd;fljasldkjflksdj<&c=d>
+            // assume a well formed query string: <a=b&>TrustAuthenticationDefaults.AuthenticationPropertiesKey=kasjd;fljasldkjflksdj<&c=d>
             var startIndex = 0;
-            if (string.IsNullOrEmpty(state) || (startIndex = state.IndexOf(PersonalDefaults.AuthenticationPropertiesKey, StringComparison.Ordinal)) == -1)
+            if (string.IsNullOrEmpty(state) || (startIndex = state.IndexOf(TrustDefaults.AuthenticationPropertiesKey, StringComparison.Ordinal)) == -1)
             {
                 return null;
             }
 
-            var authenticationIndex = startIndex + PersonalDefaults.AuthenticationPropertiesKey.Length;
+            var authenticationIndex = startIndex + TrustDefaults.AuthenticationPropertiesKey.Length;
             if (authenticationIndex == -1 || authenticationIndex == state.Length || state[authenticationIndex] != '=')
             {
                 return null;
@@ -1060,9 +1061,9 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 ClientId = Options.ClientId,
                 ClientSecret = Options.ClientSecret,
                 Code = authorizationResponse.Code,
-                GrantType = PersonalGrantTypes.AuthorizationCode,
+                GrantType = TrustGrantTypes.AuthorizationCode,
                 EnableTelemetryParameters = !Options.DisableTelemetry,
-                RedirectUri = properties.Items[PersonalDefaults.RedirectUriForCodePropertiesKey]
+                RedirectUri = properties.Items[TrustDefaults.RedirectUriForCodePropertiesKey]
             };
 
             var context = new AuthorizationCodeReceivedContext(Context, Scheme, Options, properties)
@@ -1237,7 +1238,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             return BuildRedirectUri(uri);
         }
         /*
-        private PersonalProtocolException CreatePersonalProtocolException(OpenIdConnectMessage message, HttpResponseMessage response)
+        private TrustProtocolException CreateTrustProtocolException(OpenIdConnectMessage message, HttpResponseMessage response)
         {
             var description = message.ErrorDescription ?? "error_description is null";
             var errorUri = message.ErrorUri ?? "error_uri is null";
@@ -1251,7 +1252,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 Logger.ResponseError(message.Error, description, errorUri);
             }
 
-            return new PersonalProtocolException(string.Format(
+            return new TrustProtocolException(string.Format(
                 CultureInfo.InvariantCulture,
                 Resources.MessageContainsError,
                 message.Error,

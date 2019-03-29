@@ -4,7 +4,6 @@ using System.Text;
 
 namespace TcAuthentication.IdentifierModel
 
-// Microsoft.IdentityModel.Protocols.Personal
 // Range: 21000 - 21999
 
 {

@@ -1,9 +1,9 @@
-﻿// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+﻿// Copyright (c) tomjones.us derived from .NET foundation
 
 using System;
+using Microsoft.Extensions.Logging;  // for ILogger
 
-namespace Microsoft.Extensions.Logging
+namespace TcAuthentication.Logging
 {
     internal static class LoggingExtensions
     {
