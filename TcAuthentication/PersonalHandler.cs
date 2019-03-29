@@ -333,6 +333,9 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 RedirectUri = BuildRedirectUri(Options.CallbackPath),
                 Resource = Options.Resource,
                 ResponseType = Options.ResponseType,
+                Scope = "openid",
+                Nonce = "OS6_WzA2Mj",
+                State = "af0ifjsldky  HTTP/1.1"  //  I added these to get the ball rolling
 //                Prompt = properties.GetParameter<string>(PersonalParameterNames.Prompt) ?? Options.Prompt,
             };
 

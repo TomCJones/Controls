@@ -215,12 +215,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// <summary>
         /// Gets or sets the 'response_mode'.
         /// </summary>
-        public string ResponseMode { get; set; } = "FormPost";  // PersonalResponseMode.FormPost;
+        public string ResponseMode { get; set; } = "form_post";  // PersonalResponseMode.FormPost;
 
         /// <summary>
         /// Gets or sets the 'response_type'.
         /// </summary>
-        public string ResponseType { get; set; } = "IdToken"; // PersonalResponseType.IdToken;
+        public string ResponseType { get; set; } = "id_token"; // PersonalResponseType.IdToken;
 
         /// <summary>
         /// Gets or sets the 'prompt'.
