@@ -25,7 +25,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// <summary>
         /// The prefix used to for the nonce in the cookie.
         /// </summary>
-        public static readonly string CookieNoncePrefix = ".AspNetCore.Personal.Nonce.";
+        public static readonly string CookieNoncePrefix = ".TCA.Personal.Nonce.";
 
         /// <summary>
         /// The property for the RedirectUri that was used when asking for a 'authorizationCode'.

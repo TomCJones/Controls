@@ -1,4 +1,7 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.IO;
+using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Logging;
@@ -7,78 +10,87 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace TcAuthentication.IdentifierModel
-
 {
-
     /// <summary>
-    ///  Retrieves a populated <see cref="PersonalConfiguration"/> given an address.
+    ///  Retrieves a populated <see cref="PersonalConfiguration"/> given a fileName.
     /// </summary>
-    public class PersonalConfigurationRetriever : IConfigurationRetriever<PersonalConfiguration>
+    public class PersonalConfigurationRetriever
     {
+        protected string _fileName = "";
 
-        /// <summary>
-        /// Retrieves a populated <see cref="PersonalConfiguration"/> given an address.
-        /// </summary>
-        /// <param name="address">address of the discovery document.</param>
-        /// <param name="cancel"><see cref="CancellationToken"/>.</param>
-        /// <returns>A populated <see cref="PersonalConfiguration"/> instance.</returns>
-        public static Task<PersonalConfiguration> GetAsync(string address, CancellationToken cancel)
+        public PersonalConfigurationRetriever(string FileName)
         {
-            return GetAsync(address, new HttpDocumentRetriever(), cancel);
+            _fileName = FileName;
         }
 
-        /// <summary>
-        /// Retrieves a populated <see cref="PersonalConfiguration"/> given an address and an <see cref="HttpClient"/>.
-        /// </summary>
-        /// <param name="address">address of the discovery document.</param>
-        /// <param name="httpClient">the <see cref="HttpClient"/> to use to read the discovery document.</param>
-        /// <param name="cancel"><see cref="CancellationToken"/>.</param>
-        /// <returns>A populated <see cref="PersonalConfiguration"/> instance.</returns>
-        public static Task<PersonalConfiguration> GetAsync(string address, HttpClient httpClient, CancellationToken cancel)
+        public async Task<PersonalConfiguration> GetConfigurationAsync()
         {
-            return GetAsync(address, new HttpDocumentRetriever(httpClient), cancel);
-        }
-
-        Task<PersonalConfiguration> IConfigurationRetriever<PersonalConfiguration>.GetConfigurationAsync(string address, IDocumentRetriever retriever, CancellationToken cancel)
-        {
-            return GetAsync(address, retriever, cancel);
+            PersonalConfiguration pc = await GetAsync(_fileName);
+            return pc;
         }
 
         /// <summary>
         /// Retrieves a populated <see cref="PersonalConfiguration"/> given an address and an <see cref="IDocumentRetriever"/>.
         /// </summary>
-        /// <param name="address">address of the discovery document.</param>
-        /// <param name="retriever">the <see cref="IDocumentRetriever"/> to use to read the discovery document</param>
-        /// <param name="cancel"><see cref="CancellationToken"/>.</param>
+        /// <param name="fileName">address of the discovery document.</param>
         /// <returns>A populated <see cref="PersonalConfiguration"/> instance.</returns>
-        public static async Task<PersonalConfiguration> GetAsync(string address, IDocumentRetriever retriever, CancellationToken cancel)
+        public static async Task<PersonalConfiguration> GetAsync(string fileName)
         {
-            if (string.IsNullOrWhiteSpace(address))
-                throw LogHelper.LogArgumentNullException(nameof(address));
 
-            if (retriever == null)
+            string jDoc = "";
+            if (string.IsNullOrWhiteSpace(fileName))  //  then use default values
             {
-                throw LogHelper.LogArgumentNullException(nameof(retriever));
-            }
-
-            string doc = await retriever.GetDocumentAsync(address, cancel).ConfigureAwait(false);
-
-            LogHelper.LogVerbose(LogMessages.IDX21811, doc);
-            PersonalConfiguration openIdConnectConfiguration = JsonConvert.DeserializeObject<PersonalConfiguration>(doc);
-            if (!string.IsNullOrEmpty(openIdConnectConfiguration.JwksUri))
-            {
-                LogHelper.LogVerbose(LogMessages.IDX21812, openIdConnectConfiguration.JwksUri);
-                string keys = await retriever.GetDocumentAsync(openIdConnectConfiguration.JwksUri, cancel).ConfigureAwait(false);
-
-                LogHelper.LogVerbose(LogMessages.IDX21813, openIdConnectConfiguration.JwksUri);
-                openIdConnectConfiguration.JsonWebKeySet = JsonConvert.DeserializeObject<JsonWebKeySet>(keys);
-                foreach (SecurityKey key in openIdConnectConfiguration.JsonWebKeySet.GetSigningKeys())
+                PersonalConfiguration personalConfiguration = new PersonalConfiguration
                 {
-                    openIdConnectConfiguration.SigningKeys.Add(key);
-                }
+                    AuthorizationEndpoint = "openid:",
+                    Issuer = "https://self-issued.me",
+                    ScopesSupported = { "openid", "profile", "email", "address", "phone" },
+                    ResponseTypesSupported = { "id_token" },
+                    SubjectTypesSupported = { "pairwise" },
+                    IdTokenEncryptionAlgValuesSupported = { "RS256" },
+                    RequestObjectSigningAlgValuesSupported = { "none", "RS256" }
+                };
+
+                return personalConfiguration;
             }
 
-            return openIdConnectConfiguration;
+            else
+            {
+                using (FileStream sourceStream = new FileStream(fileName,
+                    FileMode.Open, FileAccess.Read, FileShare.Read,
+                    bufferSize: 4096, useAsync: true))
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    byte[] buffer = new byte[0x1000];
+                    int numRead;
+                    while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+                    {
+                        string text = Encoding.Unicode.GetString(buffer, 0, numRead);
+                        sb.Append(text);
+                    }
+
+                    jDoc = sb.ToString();
+                }
+
+                LogHelper.LogVerbose(LogMessages.IDX21811, jDoc);
+                PersonalConfiguration personalConfiguration = JsonConvert.DeserializeObject<PersonalConfiguration>(jDoc);
+
+                if (!string.IsNullOrEmpty(personalConfiguration.JwksUri))
+                {
+                    LogHelper.LogVerbose(LogMessages.IDX21812, personalConfiguration.JwksUri);
+                    //               string keys = await retriever.GetDocumentAsync(personalConfiguration.JwksUri, cancel).ConfigureAwait(false);
+
+                    LogHelper.LogVerbose(LogMessages.IDX21813, personalConfiguration.JwksUri);
+                    //                personalConfiguration.JsonWebKeySet = JsonConvert.DeserializeObject<JsonWebKeySet>(keys);
+                    foreach (SecurityKey key in personalConfiguration.JsonWebKeySet.GetSigningKeys())
+                    {
+                        personalConfiguration.SigningKeys.Add(key);
+                    }
+                }
+
+                return personalConfiguration;
+            }
         }
     }
 }

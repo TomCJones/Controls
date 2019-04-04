@@ -25,7 +25,7 @@ namespace Microsoft.AspNetCore.Authentication.Trust
         /// <summary>
         /// The prefix used to for the nonce in the cookie.
         /// </summary>
-        public static readonly string CookieNoncePrefix = ".AspNetCore.Trust.Nonce.";
+        public static readonly string CookieNoncePrefix = ".TCA.Trust.Nonce.";
 
         /// <summary>
         /// The property for the RedirectUri that was used when asking for a 'authorizationCode'.

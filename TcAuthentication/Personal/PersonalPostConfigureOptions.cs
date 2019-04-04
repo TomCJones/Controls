@@ -71,7 +71,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             {
                 if (options.Configuration != null)
                 {
-                    options.ConfigurationManager = new StaticConfigurationManager<PersonalConfiguration>(options.Configuration);
+                    options.ConfigurationManager = new PersonalConfigurationRetriever(options.ConfigurationLocation);
                 }
                 else if (!(string.IsNullOrEmpty(options.MetadataAddress) && string.IsNullOrEmpty(options.Authority)))
                 {
@@ -91,8 +91,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                         throw new InvalidOperationException("The MetadataAddress or Authority must use HTTPS unless disabled for development by setting RequireHttpsMetadata=false.");
                     }
 
-                    options.ConfigurationManager = new ConfigurationManager<PersonalConfiguration>(options.MetadataAddress, new PersonalConfigurationRetriever(),
-                       new HttpDocumentRetriever(options.Backchannel) { RequireHttps = options.RequireHttpsMetadata });
+                    options.ConfigurationManager = new PersonalConfigurationRetriever(options.ConfigurationLocation);
                 }
             }
         }

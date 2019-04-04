@@ -170,7 +170,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             if (_configuration == null && Options.ConfigurationManager != null)
             {
-                _configuration = await Options.ConfigurationManager.GetConfigurationAsync(Context.RequestAborted);
+                _configuration = await Options.ConfigurationManager.GetConfigurationAsync();
             }
 
             var message = new OpenIdConnectMessage()
@@ -323,7 +323,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             if (_configuration == null && Options.ConfigurationManager != null)
             {
-                _configuration = await Options.ConfigurationManager.GetConfigurationAsync(Context.RequestAborted);
+                _configuration = await Options.ConfigurationManager.GetConfigurationAsync();
             }
 
             var message = new OpenIdConnectMessage
@@ -434,7 +434,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         protected override async Task<HandleRequestResult> HandleRemoteAuthenticateAsync()
         {
             Logger.EnteringOpenIdAuthenticationHandlerHandleRemoteAuthenticateAsync(GetType().FullName);
-
+ //           return HandleRequestResult.SkipHandler();  /// TEMP  TODO remove this  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
             OpenIdConnectMessage authorizationResponse = null;
 
             if (string.Equals(Request.Method, "GET", StringComparison.OrdinalIgnoreCase))

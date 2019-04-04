@@ -35,11 +35,11 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// </remarks>
         public PersonalOptions()
         {
-            CallbackPath = new PathString("/signin-oidc");
-            SignedOutCallbackPath = new PathString("/signout-callback-oidc");
-            RemoteSignOutPath = new PathString("/signout-oidc");
+            CallbackPath = new PathString("/signin-oisi");
+            SignedOutCallbackPath = new PathString("/signout-callback-oisi");
+            RemoteSignOutPath = new PathString("/signout-oisi");
 
-//            Events = new PersonalEvents();
+            //            Events = new PersonalEvents();
             Scope.Add("openid");
             Scope.Add("profile");
 
@@ -127,11 +127,13 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// </summary>
         public PersonalConfiguration Configuration { get; set; }
 
+        public string ConfigurationLocation {get; set; }
+
         /// <summary>
         /// Responsible for retrieving, caching, and refreshing the configuration from metadata.
         /// If not provided, then one will be created using the MetadataAddress and Backchannel properties.
         /// </summary>
-        public IConfigurationManager<PersonalConfiguration> ConfigurationManager { get; set; }
+        public PersonalConfigurationRetriever ConfigurationManager { get; set; }
 
         /// <summary>
         /// Boolean to set whether the handler should go to user info endpoint to retrieve additional claims or not after creating an identity from id_token received from token endpoint.

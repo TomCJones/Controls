@@ -1,4 +1,4 @@
-﻿// PersoanlExtensions.cs copyright (c) tomjones.us
+﻿// TrustExtensions.cs copyright (c) tomjones.us
 using System;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Trust;
