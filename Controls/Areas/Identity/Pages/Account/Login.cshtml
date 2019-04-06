@@ -26,6 +26,7 @@
                 {
                     <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                         <div>
+                            <p>The "Personal" provider requires an Authenticator installed in you device. The "Trust Registry" provider should be used if your data is stored there.</p>
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {

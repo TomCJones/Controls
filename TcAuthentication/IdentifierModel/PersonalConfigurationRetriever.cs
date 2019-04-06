@@ -42,7 +42,7 @@ namespace TcAuthentication.IdentifierModel
             {
                 PersonalConfiguration personalConfiguration = new PersonalConfiguration
                 {
-                    AuthorizationEndpoint = "openid:",
+                    AuthorizationEndpoint = "did:",
                     Issuer = "https://self-issued.me",
                     ScopesSupported = { "openid", "profile", "email", "address", "phone" },
                     ResponseTypesSupported = { "id_token" },

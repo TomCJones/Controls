@@ -1,4 +1,4 @@
-﻿// TrustOptions.cs Copyright (c) tomjones.us
+﻿// TrustOptions.cs Copyright (c) tomjones.us  derived from .NET foundation
 
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Protocols;
 using TcAuthentication.IdentifierModel;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Microsoft.AspNetCore.Authentication.Trust
 {
@@ -176,13 +177,12 @@ namespace Microsoft.AspNetCore.Authentication.Trust
         /// is valid per: http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation
         /// </summary>
         /// <exception cref="ArgumentNullException">if 'value' is null.</exception>
-        /*
-        public TrustProtocolValidator ProtocolValidator { get; set; } = new TrustProtocolValidator()
+        public OpenIdConnectProtocolValidator ProtocolValidator { get; set; } = new OpenIdConnectProtocolValidator()
         {
             RequireStateValidation = false,
             NonceLifetime = TimeSpan.FromMinutes(15)
         };
-        */
+
         /// <summary>
         /// The request path within the application's base path where the user agent will be returned after sign out from the identity provider.
         /// See post_logout_redirect_uri from http://openid.net/specs/openid-connect-session-1_0.html#RedirectionAfterLogout.

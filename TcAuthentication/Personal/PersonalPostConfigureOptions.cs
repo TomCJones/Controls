@@ -88,7 +88,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
                     if (options.RequireHttpsMetadata && !options.MetadataAddress.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new InvalidOperationException("The MetadataAddress or Authority must use HTTPS unless disabled for development by setting RequireHttpsMetadata=false.");
+ //                       throw new InvalidOperationException("The MetadataAddress or Authority must use HTTPS unless disabled for development by setting RequireHttpsMetadata=false.");
                     }
 
                     options.ConfigurationManager = new PersonalConfigurationRetriever(options.ConfigurationLocation);

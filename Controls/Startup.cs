@@ -43,7 +43,7 @@ namespace Controls
                 .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; o.CorrelationCookie.SameSite = SameSiteMode.None; })  // same site fix
                 .AddPersonal(o => {
                     o.ClientId = "Personal"; o.ClientSecret = "bazzfazz";
-                    o.Authority = "https://idesg2rp.azurewebsites.net"; })
+                    o.Authority = "did:"; })
                 .AddTrust(o => {
                     o.ClientId = "IDESG2rp"; o.ClientSecret = "bazzfazz";
                     o.Authority = "https://idesg-idp.azurewebsites.net"; });
