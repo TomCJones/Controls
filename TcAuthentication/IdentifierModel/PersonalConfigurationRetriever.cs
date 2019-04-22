@@ -42,7 +42,7 @@ namespace TcAuthentication.IdentifierModel
             {
                 PersonalConfiguration personalConfiguration = new PersonalConfiguration
                 {
-                    AuthorizationEndpoint = "did:",
+                    AuthorizationEndpoint = "openid:",  //  how does this relate to the value in the config input from startup?
                     Issuer = "https://self-issued.me",
                     ScopesSupported = { "openid", "profile", "email", "address", "phone" },
                     ResponseTypesSupported = { "id_token" },

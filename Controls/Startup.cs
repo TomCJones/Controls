@@ -42,10 +42,10 @@ namespace Controls
             services.AddAuthentication()
                 .AddGoogle(o => { o.ClientId = CId; o.ClientSecret = CSec; o.CorrelationCookie.SameSite = SameSiteMode.None; })  // same site fix
                 .AddPersonal(o => {
-                    o.ClientId = "Personal"; o.ClientSecret = "bazzfazz";
-                    o.Authority = "did:"; })
+                    o.ClientId = "tid:tr:controls"; o.ClientSecret = "bazzfazz";
+                    o.Authority = "openid:"; })
                 .AddTrust(o => {
-                    o.ClientId = "IDESG2rp"; o.ClientSecret = "bazzfazz";
+                    o.ClientId = "tid:tr:controls"; o.ClientSecret = "bazzfazz";
                     o.Authority = "https://idesg-idp.azurewebsites.net"; });
             //                .AddAuthenticationCore(IServiceCollection coreService, Action<AuthenticationOptions> coreConfig);
             // need these services for account recovery or two factor authentication
