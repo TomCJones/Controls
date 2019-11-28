@@ -1,0 +1,68 @@
+﻿@page
+@model Controls.Pages.ClientPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].sub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].updated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].publicKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].purpose)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model
+    .Client) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sub)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publicKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.purpose)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.locator">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.locator">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.locator">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

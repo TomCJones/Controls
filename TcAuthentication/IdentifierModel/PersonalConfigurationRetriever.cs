@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using TcAuthentication.Personal;
 
 namespace TcAuthentication.IdentifierModel
 {
@@ -17,15 +18,17 @@ namespace TcAuthentication.IdentifierModel
     public class PersonalConfigurationRetriever
     {
         protected string _fileName = "";
+        protected string _authority = "";
 
-        public PersonalConfigurationRetriever(string FileName)
+        public PersonalConfigurationRetriever(PersonalOptions options)
         {
-            _fileName = FileName;
+            _fileName = options.ConfigurationLocation;
+            _authority = options.Authority;
         }
 
         public async Task<PersonalConfiguration> GetConfigurationAsync()
         {
-            PersonalConfiguration pc = await GetAsync(_fileName);
+            PersonalConfiguration pc = await GetAsync(_fileName, _authority);
             return pc;
         }
 
@@ -34,15 +37,17 @@ namespace TcAuthentication.IdentifierModel
         /// </summary>
         /// <param name="fileName">address of the discovery document.</param>
         /// <returns>A populated <see cref="PersonalConfiguration"/> instance.</returns>
-        public static async Task<PersonalConfiguration> GetAsync(string fileName)
+        public static async Task<PersonalConfiguration> GetAsync(string fileName, string authority)
         {
 
             string jDoc = "";
             if (string.IsNullOrWhiteSpace(fileName))  //  then use default values
             {
+                Uri uriAuth = new Uri(authority);
+                Uri uriAuthz = new Uri(uriAuth, "auth");  // this adds the endpoint id that we have defined for "Personal" authentication
                 PersonalConfiguration personalConfiguration = new PersonalConfiguration
                 {
-                    AuthorizationEndpoint = "openid:",  //  how does this relate to the value in the config input from startup?
+                    AuthorizationEndpoint = uriAuthz.ToString(),
                     Issuer = "https://self-issued.me",
                     ScopesSupported = { "openid", "profile", "email", "address", "phone" },
                     ResponseTypesSupported = { "id_token" },

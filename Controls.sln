@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "Controls\Controls.csproj", "{496E92B4-01EE-4713-989E-4007EC120040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcAuthentication", "TcAuthentication\TcAuthentication.csproj", "{D0F8F26C-BF97-451A-925D-348CA1E03A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcAuthentication", "TcAuthentication\TcAuthentication.csproj", "{D0F8F26C-BF97-451A-925D-348CA1E03A8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

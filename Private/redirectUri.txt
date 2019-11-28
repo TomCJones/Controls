@@ -1,0 +1,4036 @@
+redirectUri =
+https://idesg-idp.azurewebsites.net/connect/authorize?client_id=RPTestCore&redirect_uri=https%3A%2F%2Flocalhost%3A44304%2Fsignin-oidc&response_type=IdToken&state=CfDJ8J2_diKlvndPnAIxb7yQ8MILPos2ieULmOfxAHdhsl6m8D2SzFZRZE9YDryZTtPFksuzpZ38L5ZLkMl5-hZiBnltxFjRjb47_-aaS5UO8Zt58bJnzRfFHcmGXFXHCezKpwIqpnjAfS6z1RtxRdPXCOHQ1CpyE4mw2E2MYFZ9QoBRcg3TmzBey2pVd5gVHKImY6RXpRtyOJnG0dGx0lj5-kwKs7P3GMrWVSLlphRaSqm6bwp6hkVQMNmmmfC77krPKTQWhhkIXElV5beAX641Koyiz7B2nOddf1wQF307nHM6RCHDVhOEMEEvidaWp0yTdeRPwQk7_l6GjvLv3IGDMd-7jqDuDvp3kEp9q78DRnaB&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0
+fixed client_id
+https://idesg-idp.azurewebsites.net/connect/authorize?client_id=IDESG2rp&redirect_uri=https%3A%2F%2Flocalhost%3A44304%2Fsignin-oidc&response_type=IdToken&state=CfDJ8J2_diKlvndPnAIxb7yQ8MJJh6Z1UZhhIiZE-dkpnw6_m4_2c7Ic43l5eEAF8yP_c0tpDVTjSsir25PMbBq4z_OJSv67_IPrUQuB66A6lvT_O8VbRfqp6nuGQ4bMJSBt63sR-WZQB5Y1bXlSH2XkNmKwD3hsQNTzqPVtpAGC7IdgsioRqzvhWLhYkC5X6QovvSAV-tbGbNDOSkXWfVbMOnTxAbYGtyIBqLlHqM4x_rUCxlHtSO9oy0gHMsq6PWhj1W3uCVLmUgcdVKq1jhTa1EADQVCIuo0I1nhn4QuueeCAwXj0JQBmaaHHQJ_1Pqos3gzm4c4nFx_MxrROtMoXfhm2BlbaHVScsHyXDYBV-bgb&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0
+2rp
+https://idesg-idp.azurewebsites.net/connect/authorize?client_id=IDESG2rp&redirect_uri=https%3A%2F%2Fidesg2rp.azurewebsites.net%2Fsignin-oidc&response_type=id_token&prompt=IDESG&scope=openid%20profile%20email&response_mode=form_post&nonce=636892538999829851.ZTc3MTAyYTMtMDM2Yy00NzFmLWE0YjMtOGI3ZWI5NTIyZTBiOTI5YzI2MDYtM2M2OS00MGE2LTkzNmQtZThjYThmMDJjYTVl&state=CfDJ8IeOcGnSw3REurLEQ_AcdINgy9k4Zmy1hkeTH4w7-Zs1MTFGb_i5D4dHCx63e8Se6cYDfEq0AvfdMjzFpfbeoPCV9KhcYc2aNSHYuVpB76kUKzUd_oud9W28XnZ8w2sf6lnPXlpmGyG5YBlDqMvMbzmVa4Lq6lYbs2oJIW8DObDpZJjobZ9jSH8XkkWaySHrHGBcHPapld5LoMysdKy6rem9FTh_VFcIR9DKaTFoeM21i7c0hflh2l3w7cuYbm4DdGeoIwuoaqT1kQ_p7UuqQ0BlclJXCX_7qhmSCm8e7WlRbU0gW4CqROr-HhjqRs-AqbuJeo8gGW_dYoaeGO2msAMg684fOJKm_tmyQESOwe687sHjrAuCJjRvjOb7F232FA&x-client-SKU=ID_NETSTANDARD1_4&x-client-ver=5.2.0.0
+
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2019-03-27T00:55:49.309Z",
+        "id": "page_3",
+        "title": "https://localhost:44304/Identity/Account/ExternalLogin?returnUrl=~%2FContacts%2FDisplay",
+        "pageTimings": {
+          "onContentLoad": 58157.04900003038,
+          "onLoad": 58155.78600001754
+        }
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.022Z",
+        "id": "page_2",
+        "title": "https://localhost:44304/Identity/Account/Login?",
+        "pageTimings": {
+          "onContentLoad": 2552.7080000028946,
+          "onLoad": 2550.275000045076
+        }
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:34.351Z",
+        "id": "page_1",
+        "title": "https://localhost:44304/Contacts/Display?",
+        "pageTimings": {
+          "onContentLoad": 4599.2199999745935,
+          "onLoad": 4597.781999967992
+        }
+      }
+    ],
+    "entries": [
+      {
+        "startedDateTime": "2019-03-27T00:55:49.293Z",
+        "time": 50681.14300002344,
+        "request": {
+          "method": "POST",
+          "url": "https://localhost:44304/Identity/Account/ExternalLogin?returnUrl=~%2FContacts%2FDisplay",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":method",
+              "value": "POST"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":path",
+              "value": "/Identity/Account/ExternalLogin?returnUrl=~%2FContacts%2FDisplay"
+            },
+            {
+              "name": "content-length",
+              "value": "200"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "origin",
+              "value": "https://localhost:44304"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "content-type",
+              "value": "application/x-www-form-urlencoded"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "returnUrl",
+              "value": "~%2FContacts%2FDisplay"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0,
+          "postData": {
+            "mimeType": "application/x-www-form-urlencoded",
+            "text": "provider=Personal&__RequestVerificationToken=CfDJ8J2_diKlvndPnAIxb7yQ8MLeo06PA028sQHk4tB0_dFYTK0qrClB1rAC8BDbA5cdQ8zWM1AZu5akPlNfQC0-JhPqqXRrdKepn9ccjshY75vGXraepOlz9bi6MJlEhgidqrLGLEG4y7yDnRNXocKX84M",
+            "params": [
+              {
+                "name": "provider",
+                "value": "Personal"
+              },
+              {
+                "name": "__RequestVerificationToken",
+                "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MLeo06PA028sQHk4tB0_dFYTK0qrClB1rAC8BDbA5cdQ8zWM1AZu5akPlNfQC0-JhPqqXRrdKepn9ccjshY75vGXraepOlz9bi6MJlEhgidqrLGLEG4y7yDnRNXocKX84M"
+              }
+            ]
+          }
+        },
+        "response": {
+          "status": 302,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "302"
+            },
+            {
+              "name": "location",
+              "value": "https://idesg-idp.azurewebsites.net/connect/authorize?client_id=IDESG2rp&redirect_uri=https%3A%2F%2Flocalhost%3A44304%2Fsignin-oidc&response_type=IdToken&state=CfDJ8J2_diKlvndPnAIxb7yQ8MIqhOLtrwVFQLryTBhHGNNYT05BB5BHrFhWzV0GhqPLkd27bmP3aXQRVwox1Yejae9KaeLcqnHhYVV5DwYCtTWkogz1GQGHg8JPSRIevifuYrDSMB89o7rnF3jRSyHFuvYLcCV2vhE-J0B4oUwspfZF2j5FThtGq92uguLggIzKqvbnmyd9iQYT2YRTVXVjRzOnvHhHyrmvOpjpgnvCMcHvMQULFgV49GwzdHVa08bqMUpMLj6onzbHMHTpY_NJjRM0vUrIJj_7cjul3hcbcbvHal8wdc-jcmltq2Nl_EYKEioJVS1euUlNMacJkrvkbfevKTtKBACqjnyER3dEHc2H&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "set-cookie",
+              "value": ".AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MKblFc9BI4an7esN8eHqChsY2Fx5272X0_xL4O9xi2yZ0rogE2WKZBdF0Pl2vlOCK1KWbd6G3hIZX4CcyEobt4b62bs0qSzh0cm-S7x25PhqBX7FRQqpHZ5cmcvFDOdJTWK7RPDVS0HTtQ7L2wlHeXq; path=/; samesite=lax; httponly"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxBY2NvdW50XEV4dGVybmFsTG9naW4=?="
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:56:39 GMT"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MKblFc9BI4an7esN8eHqChsY2Fx5272X0_xL4O9xi2yZ0rogE2WKZBdF0Pl2vlOCK1KWbd6G3hIZX4CcyEobt4b62bs0qSzh0cm-S7x25PhqBX7FRQqpHZ5cmcvFDOdJTWK7RPDVS0HTtQ7L2wlHeXq",
+              "path": "/",
+              "expires": null,
+              "httpOnly": true,
+              "secure": false,
+              "sameSite": "lax"
+            }
+          ],
+          "content": {
+            "size": 0,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "https://idesg-idp.azurewebsites.net/connect/authorize?client_id=IDESG2rp&redirect_uri=https%3A%2F%2Flocalhost%3A44304%2Fsignin-oidc&response_type=IdToken&state=CfDJ8J2_diKlvndPnAIxb7yQ8MIqhOLtrwVFQLryTBhHGNNYT05BB5BHrFhWzV0GhqPLkd27bmP3aXQRVwox1Yejae9KaeLcqnHhYVV5DwYCtTWkogz1GQGHg8JPSRIevifuYrDSMB89o7rnF3jRSyHFuvYLcCV2vhE-J0B4oUwspfZF2j5FThtGq92uguLggIzKqvbnmyd9iQYT2YRTVXVjRzOnvHhHyrmvOpjpgnvCMcHvMQULFgV49GwzdHVa08bqMUpMLj6onzbHMHTpY_NJjRM0vUrIJj_7cjul3hcbcbvHal8wdc-jcmltq2Nl_EYKEioJVS1euUlNMacJkrvkbfevKTtKBACqjnyER3dEHc2H&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 803
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 34.98800002045557,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 48.91199999999999,
+          "wait": 50423.61000000447,
+          "receive": 173.63299999851733,
+          "_blocked_queueing": 16.88900002045557
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "other",
+        "connection": "46345",
+        "pageref": "page_3"
+      },
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+      {
+        "startedDateTime": "2019-03-27T00:56:39.974Z",
+        "time": 1837.672000011433,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/connect/authorize?client_id=IDESG2rp&redirect_uri=https%3A%2F%2Flocalhost%3A44304%2Fsignin-oidc&response_type=IdToken&state=CfDJ8J2_diKlvndPnAIxb7yQ8MIqhOLtrwVFQLryTBhHGNNYT05BB5BHrFhWzV0GhqPLkd27bmP3aXQRVwox1Yejae9KaeLcqnHhYVV5DwYCtTWkogz1GQGHg8JPSRIevifuYrDSMB89o7rnF3jRSyHFuvYLcCV2vhE-J0B4oUwspfZF2j5FThtGq92uguLggIzKqvbnmyd9iQYT2YRTVXVjRzOnvHhHyrmvOpjpgnvCMcHvMQULFgV49GwzdHVa08bqMUpMLj6onzbHMHTpY_NJjRM0vUrIJj_7cjul3hcbcbvHal8wdc-jcmltq2Nl_EYKEioJVS1euUlNMacJkrvkbfevKTtKBACqjnyER3dEHc2H&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Host",
+              "value": "idesg-idp.azurewebsites.net"
+            },
+            {
+              "name": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "Accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+            },
+            {
+              "name": "Referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "Cookie",
+              "value": "ARRAffinity=5b2816267c7316a7019fa004b58a03d27045ee4623b9931aa0f0b2c46a6eb144"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "client_id",
+              "value": "IDESG2rp"
+            },
+            {
+              "name": "redirect_uri",
+              "value": "https%3A%2F%2Flocalhost%3A44304%2Fsignin-oidc"
+            },
+            {
+              "name": "response_type",
+              "value": "IdToken"
+            },
+            {
+              "name": "state",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIqhOLtrwVFQLryTBhHGNNYT05BB5BHrFhWzV0GhqPLkd27bmP3aXQRVwox1Yejae9KaeLcqnHhYVV5DwYCtTWkogz1GQGHg8JPSRIevifuYrDSMB89o7rnF3jRSyHFuvYLcCV2vhE-J0B4oUwspfZF2j5FThtGq92uguLggIzKqvbnmyd9iQYT2YRTVXVjRzOnvHhHyrmvOpjpgnvCMcHvMQULFgV49GwzdHVa08bqMUpMLj6onzbHMHTpY_NJjRM0vUrIJj_7cjul3hcbcbvHal8wdc-jcmltq2Nl_EYKEioJVS1euUlNMacJkrvkbfevKTtKBACqjnyER3dEHc2H"
+            },
+            {
+              "name": "x-client-SKU",
+              "value": "ID_NETSTANDARD2_0"
+            },
+            {
+              "name": "x-client-ver",
+              "value": "5.3.0.0"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "ARRAffinity",
+              "value": "5b2816267c7316a7019fa004b58a03d27045ee4623b9931aa0f0b2c46a6eb144",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": 1129,
+          "bodySize": 0
+        },
+-----------------------------------------------------------------------------------------------------------
+        "response": {
+          "status": 302,
+          "statusText": "Found",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Location",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:43 GMT"
+            },
+            {
+              "name": "Content-Length",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "x-unknown",
+            "compression": 0
+          },
+          "redirectURL": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "headersSize": 511,
+          "bodySize": 0,
+          "_transferSize": 511
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 129.35699998547136,
+          "dns": 7.321000000000012,
+          "ssl": 231.18400000000003,
+          "connect": 269.094,
+          "send": 1.259999999999991,
+          "wait": 1308.962000000976,
+          "receive": 121.67800002498552,
+          "_blocked_queueing": 61.27499998547137
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "other",
+        "connection": "46563",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:41.804Z",
+        "time": 1192.3299999907613,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Host",
+              "value": "idesg-idp.azurewebsites.net"
+            },
+            {
+              "name": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "Cache-Control",
+              "value": "no-cache"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "Accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+            },
+            {
+              "name": "Referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": "Accept-Encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "Cookie",
+              "value": "ARRAffinity=5b2816267c7316a7019fa004b58a03d27045ee4623b9931aa0f0b2c46a6eb144"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "errorId",
+              "value": "CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            }
+          ],
+          "cookies": [
+            {
+              "name": "ARRAffinity",
+              "value": "5b2816267c7316a7019fa004b58a03d27045ee4623b9931aa0f0b2c46a6eb144",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": 930,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:44 GMT"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 3518,
+            "mimeType": "text/html",
+            "compression": 1969
+          },
+          "redirectURL": "",
+          "headersSize": 211,
+          "bodySize": 1549,
+          "_transferSize": 1760
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 461.1909999829531,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.325999999999965,
+          "wait": 720.0040000083819,
+          "receive": 10.808999999426305,
+          "_blocked_queueing": 44.39599998295307
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "connection": "46563",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.020Z",
+        "time": 681.0769999865443,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":path",
+              "value": "/Identity/Account/Login?"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "expires",
+              "value": "Thu, 01 Jan 1970 00:00:00 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "set-cookie",
+              "value": ".AspNetCore.Identity.External=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"
+            },
+            {
+              "name": "set-cookie",
+              "value": ".AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy; path=/; samesite=lax; httponly"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxBY2NvdW50XExvZ2lu?="
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNetCore.Identity.External",
+              "value": "",
+              "path": "/",
+              "expires": "1970-01-01T00:00:00.000Z",
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "path": "/",
+              "expires": null,
+              "httpOnly": true,
+              "secure": false,
+              "sameSite": "lax"
+            }
+          ],
+          "content": {
+            "size": 6739,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 7256
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 26.482999960329384,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.34299999999999997,
+          "wait": 621.6710000270717,
+          "receive": 32.57999999914318,
+          "_blocked_queueing": 2.2039999603293836
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:34.344Z",
+        "time": 1024.7040000394918,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Contacts/Display?",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":path",
+              "value": "/Contacts/Display?"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 302,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "302"
+            },
+            {
+              "name": "location",
+              "value": "/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "set-cookie",
+              "value": ".AspNetCore.Mvc.CookieTempDataProvider=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; samesite=lax"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xDb250YWN0c1xEaXNwbGF5?="
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:35 GMT"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "",
+              "path": "/",
+              "expires": "1970-01-01T00:00:00.000Z",
+              "httpOnly": false,
+              "secure": false,
+              "sameSite": "lax"
+            }
+          ],
+          "content": {
+            "size": 0,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 294
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 70.19900002692268,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 38.82599999999999,
+          "wait": 827.9010000261403,
+          "receive": 87.77799998642877,
+          "_blocked_queueing": 7.258000026922673
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "other",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:35.369Z",
+        "time": 1723.9819999667816,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":path",
+              "value": "/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "Contacts/Display",
+              "value": ""
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "set-cookie",
+              "value": ".AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-; path=/; samesite=lax; httponly"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxBY2NvdW50XE1hbmFnZVxzaWduaW5yZXF1aXJlZA==?="
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:37 GMT"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "path": "/",
+              "expires": null,
+              "httpOnly": true,
+              "secure": false,
+              "sameSite": "lax"
+            }
+          ],
+          "content": {
+            "size": 4359,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 4739
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 91.50799994680285,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.20000000000000284,
+          "wait": 1613.1790000239648,
+          "receive": 19.09499999601394,
+          "_blocked_queueing": 36.379999946802855
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:37.314Z",
+        "time": 1150.9669999941252,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/lib/bootstrap/dist/css/bootstrap.css",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/lib/bootstrap/dist/css/bootstrap.css"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/css,*/*;q=0.1"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:37 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4d5dc3cc886e2\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 08 Mar 2019 18:24:59 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "text/css"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xsaWJcYm9vdHN0cmFwXGRpc3RcY3NzXGJvb3RzdHJhcC5jc3M=?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "182626"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 182626,
+            "mimeType": "text/css"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 182888
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 278.86700000130014,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.8159999999999741,
+          "wait": 506.366999993857,
+          "receive": 364.9169999989681,
+          "_blocked_queueing": 0.9710000013001263
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "lineNumber": 8
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "stylesheet",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:37.315Z",
+        "time": 869.8439999716356,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/css/site.css",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/css/site.css"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/css,*/*;q=0.1"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:37 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4dea0e9d8759e\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Tue, 19 Mar 2019 22:13:00 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "text/css"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xjc3Ncc2l0ZS5jc3M=?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "2974"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 2974,
+            "mimeType": "text/css"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 3138
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 278.88499995943533,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.8759999999999764,
+          "wait": 453.21499998168275,
+          "receive": 136.86800003051758,
+          "_blocked_queueing": 11.743999959435314
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "lineNumber": 11
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "stylesheet",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:37.315Z",
+        "time": 1153.576000011526,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/lib/jquery/dist/jquery.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/lib/jquery/dist/jquery.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:37 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4d5dc3cce0183\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 08 Mar 2019 18:24:59 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xsaWJcanF1ZXJ5XGRpc3RcanF1ZXJ5Lmpz?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "282115"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 282115,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 282449
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 278.3660000087358,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.8160000000000309,
+          "wait": 486.1700000079833,
+          "receive": 388.22399999480695,
+          "_blocked_queueing": 12.255000008735806
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "lineNumber": 85
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:37.316Z",
+        "time": 1560.3289999999106,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/lib/bootstrap/dist/js/bootstrap.bundle.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/lib/bootstrap/dist/js/bootstrap.bundle.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:38 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4d5dc3cc91936\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 08 Mar 2019 18:24:59 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xsaWJcYm9vdHN0cmFwXGRpc3RcanNcYm9vdHN0cmFwLmJ1bmRsZS5qcw==?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "218806"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 218806,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 219124
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 278.00799998483063,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.5779999999999745,
+          "wait": 869.5220000091233,
+          "receive": 412.22100000595674,
+          "_blocked_queueing": 11.861999984830618
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "lineNumber": 86
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:37.317Z",
+        "time": 486.84600001433864,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/js/site.js?v=JT7v6lZ00Mp1G88aHHXvw1WL4vWDdXo3gt_wZx2XArE",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/js/site.js?v=JT7v6lZ00Mp1G88aHHXvw1WL4vWDdXo3gt_wZx2XArE"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "v",
+              "value": "JT7v6lZ00Mp1G88aHHXvw1WL4vWDdXo3gt_wZx2XArE"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MJR8SXHK-ysnjMXwoYr0VyeygaxagXw4n46aq1Xnr0u3Xag06diFe1T_H3KZ7O8UszUPVpPO9fvcNeFh0Rm4TAVRg7f5kdzl9oseRFCTwUQM2z1jHKeBz8WH46LntyhxiIqWqxsxj6AQ6sFzTjFLin-",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:37 GMT"
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 15 Mar 2019 20:24:09 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4db6d0b69fb08\""
+            },
+            {
+              "name": "content-type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xqc1xzaXRlLmpz?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "392"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 392,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 570
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 277.53900002994015,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.3859999999999957,
+          "wait": 207.16700001633913,
+          "receive": 1.753999968059361,
+          "_blocked_queueing": 45.37300002994016
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Manage/signinrequired?Contacts/Display",
+          "lineNumber": 89
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46261",
+        "pageref": "page_1"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.775Z",
+        "time": 452.1909999893978,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/lib/bootstrap/dist/css/bootstrap.css",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/lib/bootstrap/dist/css/bootstrap.css"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/css,*/*;q=0.1"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4d5dc3cc886e2\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 08 Mar 2019 18:24:59 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "text/css"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xsaWJcYm9vdHN0cmFwXGRpc3RcY3NzXGJvb3RzdHJhcC5jc3M=?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "182626"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 182626,
+            "mimeType": "text/css"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 182911
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 28.49000001045689,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.2870000000000026,
+          "wait": 205.16899998255445,
+          "receive": 218.24499999638647,
+          "_blocked_queueing": 11.07800001045689
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 8
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "stylesheet",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.776Z",
+        "time": 427.16400005156174,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/css/site.css",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/css/site.css"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "text/css,*/*;q=0.1"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4dea0e9d8759e\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Tue, 19 Mar 2019 22:13:00 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "text/css"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xjc3Ncc2l0ZS5jc3M=?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "2974"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 2974,
+            "mimeType": "text/css"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 3143
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 30.019000044133513,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.2480000000000011,
+          "wait": 202.5129999761507,
+          "receive": 194.38400003127754,
+          "_blocked_queueing": 11.113000044133514
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 11
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "stylesheet",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.776Z",
+        "time": 657.3220000136644,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/lib/jquery/dist/jquery.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/lib/jquery/dist/jquery.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4d5dc3cce0183\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 08 Mar 2019 18:24:59 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xsaWJcanF1ZXJ5XGRpc3RcanF1ZXJ5Lmpz?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "282115"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 282115,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 282426
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 30.3810000141114,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.19500000000000028,
+          "wait": 315.1519999715723,
+          "receive": 311.59400002798066,
+          "_blocked_queueing": 11.9270000141114
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 123
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.776Z",
+        "time": 468.64100004313514,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/lib/bootstrap/dist/js/bootstrap.bundle.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/lib/bootstrap/dist/js/bootstrap.bundle.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4d5dc3cc91936\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 08 Mar 2019 18:24:59 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xsaWJcYm9vdHN0cmFwXGRpc3RcanNcYm9vdHN0cmFwLmJ1bmRsZS5qcw==?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "218806"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 218806,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 219118
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 30.57200004017353,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.23300000000000054,
+          "wait": 311.55899999993295,
+          "receive": 126.27700000302866,
+          "_blocked_queueing": 11.96100004017353
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 124
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.777Z",
+        "time": 656.2790000461973,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/js/site.js?v=JT7v6lZ00Mp1G88aHHXvw1WL4vWDdXo3gt_wZx2XArE",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/js/site.js?v=JT7v6lZ00Mp1G88aHHXvw1WL4vWDdXo3gt_wZx2XArE"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "v",
+              "value": "JT7v6lZ00Mp1G88aHHXvw1WL4vWDdXo3gt_wZx2XArE"
+            }
+          ],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "etag",
+              "value": "\"1d4db6d0b69fb08\""
+            },
+            {
+              "name": "last-modified",
+              "value": "Fri, 15 Mar 2019 20:24:09 GMT"
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "content-type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "status",
+              "value": "200"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xqc1xzaXRlLmpz?="
+            },
+            {
+              "name": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "content-length",
+              "value": "392"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 392,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 548
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 96.76700004018844,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.8199999999999932,
+          "wait": 556.1860000162013,
+          "receive": 2.5059999898076057,
+          "_blocked_queueing": 46.17700004018843
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 127
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.777Z",
+        "time": 1004.285000031814,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Identity/lib/jquery-validation/dist/jquery.validate.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/Identity/lib/jquery-validation/dist/jquery.validate.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "404"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxsaWJcanF1ZXJ5LXZhbGlkYXRpb25cZGlzdFxqcXVlcnkudmFsaWRhdGUuanM=?="
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 148,
+          "_error": "net::ERR_ABORTED"
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 96.94800004509463,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.4930000000000021,
+          "wait": 556.5269999827221,
+          "receive": 350.31700000399724,
+          "_blocked_queueing": 46.17000004509464
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 131
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:43.777Z",
+        "time": 1005.1530000055209,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "404"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:43 GMT"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxsaWJcanF1ZXJ5LXZhbGlkYXRpb24tdW5vYnRydXNpdmVcanF1ZXJ5LnZhbGlkYXRlLnVub2J0cnVzaXZlLmpz?="
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 169,
+          "_error": "net::ERR_ABORTED"
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 96.57399999567866,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.384999999999998,
+          "wait": 557.2719999974817,
+          "receive": 350.9220000123605,
+          "_blocked_queueing": 46.10999999567866
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 132
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:44.962Z",
+        "time": 107.14300000108778,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Identity/lib/jquery-validation/dist/jquery.validate.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/Identity/lib/jquery-validation/dist/jquery.validate.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "404"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:44 GMT"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxsaWJcanF1ZXJ5LXZhbGlkYXRpb25cZGlzdFxqcXVlcnkudmFsaWRhdGUuanM=?="
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 14,
+          "_error": "net::ERR_ABORTED"
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 5.922000033956021,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.23600000000000065,
+          "wait": 68.60400002808123,
+          "receive": 32.380999939050525,
+          "_blocked_queueing": 0.9600000339560211
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 131
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:55:45.070Z",
+        "time": 74.18300001882017,
+        "request": {
+          "method": "GET",
+          "url": "https://localhost:44304/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":path",
+              "value": "/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "cookie",
+              "value": ".AspNet.Consent=yes; .AspNetCore.Antiforgery.Rb-5kmnJai8=CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk; .AspNetCore.Antiforgery.Pn9WGbq2RII=CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU; .AspNetCore.Mvc.CookieTempDataProvider=CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br"
+            },
+            {
+              "name": "accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache"
+            },
+            {
+              "name": ":authority",
+              "value": "localhost:44304"
+            },
+            {
+              "name": "referer",
+              "value": "https://localhost:44304/Identity/Account/Login?"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            }
+          ],
+          "queryString": [],
+          "cookies": [
+            {
+              "name": ".AspNet.Consent",
+              "value": "yes",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Rb-5kmnJai8",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIFrCxd49YdMGK1Z_52Ls_3GnCmNp_WZH1P-7Mg67bZC0vrJsqzf6I1T_loZa0x7pzSElAxE6v07YhM5UXsUsv6whWMOfBfUm2NAFfIhwff7ltxoQs3LxgmwP1lfY90NQk",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Antiforgery.Pn9WGbq2RII",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIjYMNheDkKGpgfTXvWgU64eXd72emQVaO_KNiDM6jZ-LB5JfJp5Eq56y7jvQEsUeOEORwd-ItNzQcK9kUsBfvr9ap6Tm2vhA3uo27PZInKHEGxx7m_aq7G0BQYNUAvRiU",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            },
+            {
+              "name": ".AspNetCore.Mvc.CookieTempDataProvider",
+              "value": "CfDJ8J2_diKlvndPnAIxb7yQ8MIQEI4ET7YGIUkjQtN97FytOK5z0bgbrEPtbuzwQYWp3xroSvwUAQfJ4IwmBJiP5-2F0oZu8yNcCrfL6_aZGtjjOz2-Cf1qmGQ8-iEJPPLkfD4AIXPtkL3Ih6wbWnuzYL4HZTCK0mQ3rIOTRNgO2ljy",
+              "expires": null,
+              "httpOnly": false,
+              "secure": false
+            }
+          ],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "status",
+              "value": "404"
+            },
+            {
+              "name": "date",
+              "value": "Wed, 27 Mar 2019 00:55:44 GMT"
+            },
+            {
+              "name": "x-sourcefiles",
+              "value": "=?UTF-8?B?QzpcVXNlcnNccnBfdG9fMDAwXFNvdXJjZVxSZXBvc1xDb250cm9sc1xDb250cm9sc1xJZGVudGl0eVxsaWJcanF1ZXJ5LXZhbGlkYXRpb24tdW5vYnRydXNpdmVcanF1ZXJ5LnZhbGlkYXRlLnVub2J0cnVzaXZlLmpz?="
+            },
+            {
+              "name": "server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "name": "x-powered-by",
+              "value": "ASP.NET"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 14,
+          "_error": "net::ERR_ABORTED"
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 9.978000026185066,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.31899999999999906,
+          "wait": 31.86399999321997,
+          "receive": 32.02199999941513,
+          "_blocked_queueing": 1.0660000261850655
+        },
+        "serverIPAddress": "[::1]",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://localhost:44304/Identity/Account/Login?",
+          "lineNumber": 132
+        },
+        "_priority": "High",
+        "_resourceType": "script",
+        "connection": "46345",
+        "pageref": "page_2"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.486Z",
+        "time": 1091.3350000046194,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/lib/bootstrap/dist/css/bootstrap.css",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:46 GMT"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Mon, 16 Apr 2018 02:52:31 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d3d52df686d53f\""
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/css"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 152767,
+            "mimeType": "text/css"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 32209
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 240.05500001611188,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 1.3000000000000114,
+          "wait": 363.09899999869987,
+          "receive": 486.8809999898076,
+          "_blocked_queueing": 136.67500001611188
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 8
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "stylesheet",
+        "connection": "46563",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.487Z",
+        "time": 758.5359999748804,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/css/site.css",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:45 GMT"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Thu, 19 Apr 2018 21:06:32 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d3d8224ad77611\""
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/css"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 2577,
+            "mimeType": "text/css"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 1416
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 470.2019999719374,
+          "dns": 0.657999999999987,
+          "ssl": 78.09,
+          "connect": 108.321,
+          "send": 1.141999999999996,
+          "wait": 168.22400001918152,
+          "receive": 9.98899998376146,
+          "_blocked_queueing": 312.7179999719374
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 9
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "stylesheet",
+        "connection": "46584",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.487Z",
+        "time": 1923.9669999780283,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/images/oid-l-pending-noborder.png",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:47 GMT"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d3d762f3bee412\""
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Wed, 18 Apr 2018 22:16:52 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "Content-Type",
+              "value": "image/png"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "Content-Length",
+              "value": "17938"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 17938,
+            "mimeType": "image/png"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 18175
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 1066.464999974899,
+          "dns": 0.4590000000000032,
+          "ssl": 105.28399999999999,
+          "connect": 136.55200000000002,
+          "send": 0.8149999999999977,
+          "wait": 144.27500002308187,
+          "receive": 575.4009999800473,
+          "_blocked_queueing": 753.772999974899
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 60
+        },
+        "_priority": "High",
+        "_resourceType": "image",
+        "connection": "46624",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.488Z",
+        "time": 1819.4579999983835,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/images/IDEF-reg-black-271.png",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:47 GMT"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d313c3d102dadd\""
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Sat, 12 Aug 2017 23:36:27 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "Content-Type",
+              "value": "image/png"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "Content-Length",
+              "value": "54621"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 54621,
+            "mimeType": "image/png"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 54858
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 1066.3140000280441,
+          "dns": 0.6440000000000055,
+          "ssl": 102.71999999999997,
+          "connect": 136.43899999999996,
+          "send": 0.7800000000000296,
+          "wait": 124.43199997599794,
+          "receive": 490.8489999943413,
+          "_blocked_queueing": 753.887000028044
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 68
+        },
+        "_priority": "High",
+        "_resourceType": "image",
+        "connection": "46626",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.488Z",
+        "time": 1828.2989999861456,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/lib/jquery/dist/jquery.js",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:47 GMT"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Mon, 16 Apr 2018 02:52:33 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d3d52df7b1b93b\""
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 268219,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 104793
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 1089.5439999563546,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.17499999999995453,
+          "wait": 117.76000001878293,
+          "receive": 620.8200000110082,
+          "_blocked_queueing": 765.7109999563545
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 76
+        },
+        "_priority": "Medium",
+        "_resourceType": "script",
+        "connection": "46563",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.488Z",
+        "time": 1456.592000018578,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/lib/bootstrap/dist/js/bootstrap.js",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:47 GMT"
+            },
+            {
+              "name": "Content-Encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Mon, 16 Apr 2018 02:52:32 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d3d52df71c0194\""
+            },
+            {
+              "name": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 72084,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 21719
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 1063.6840000191628,
+          "dns": 0.9189999999999827,
+          "ssl": 106.42500000000001,
+          "connect": 136.81099999999998,
+          "send": 0.45999999999997954,
+          "wait": 189.1049999860153,
+          "receive": 65.61300001339987,
+          "_blocked_queueing": 767.4010000191629
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 77
+        },
+        "_priority": "Medium",
+        "_resourceType": "script",
+        "connection": "46609",
+        "pageref": "page_3"
+      },
+      {
+        "startedDateTime": "2019-03-27T00:56:44.488Z",
+        "time": 1269.0799999836086,
+        "request": {
+          "method": "GET",
+          "url": "https://idesg-idp.azurewebsites.net/js/site.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "v",
+              "value": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "Date",
+              "value": "Wed, 27 Mar 2019 00:56:47 GMT"
+            },
+            {
+              "name": "ETag",
+              "value": "\"1d3de798bb23f00\""
+            },
+            {
+              "name": "Last-Modified",
+              "value": "Fri, 27 Apr 2018 22:46:14 GMT"
+            },
+            {
+              "name": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "name": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/javascript"
+            },
+            {
+              "name": "Accept-Ranges",
+              "value": "bytes"
+            },
+            {
+              "name": "Content-Length",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "application/javascript"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 246
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 1064.3539999850989,
+          "dns": 0.4300000000000068,
+          "ssl": 104.76799999999997,
+          "connect": 136.09700000000004,
+          "send": 0.5430000000000064,
+          "wait": 66.8439999855533,
+          "receive": 0.8120000129565597,
+          "_blocked_queueing": 768.3749999850988
+        },
+        "serverIPAddress": "137.117.17.70",
+        "_initiator": {
+          "type": "parser",
+          "url": "https://idesg-idp.azurewebsites.net/home/error?errorId=CfDJ8OMHcT-m-lNJooOkptzpxQpxRMLHfO0WsXY3LPoeOj-Wxqq-yo2lUJ_eZpqE32z-9a3IJ8KJd9tJw2KVFvgCkHQcc65fhifnqKMof1fZ8P3x4Yt740DVAh-0HE9VGMW8xV4tV9dbeiuLlHw0Cy3jHwKAVqss545Bj17tIDxgec-F8AwN7daMHJ3dfKGWdZesFcWaozXSqPctfV_zOs02a8U-KHq-nBQ7z5C7BejqgqbvQ5bqz5Sz9SHpdB97gpIbt3A5kfdpU8KeBIH17Bpc5utMNYcWTupnDPWlkFUhS_YOu3kcjB1eHtQv90ou-lUs8w",
+          "lineNumber": 78
+        },
+        "_priority": "Medium",
+        "_resourceType": "script",
+        "connection": "46610",
+        "pageref": "page_3"
+      }
+    ]
+  }
+}

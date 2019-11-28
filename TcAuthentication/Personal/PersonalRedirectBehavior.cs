@@ -1,6 +1,6 @@
 ﻿// PersonalRedirectbehavior.cs copyright (c) 2019 tomjones.us
 
-namespace Microsoft.AspNetCore.Authentication.Personal
+namespace TcAuthentication.Personal
 {
     /// <summary>
     /// Lists the different authentication methods used to

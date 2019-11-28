@@ -12,16 +12,22 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Personal;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using TcAuthentication.IdentifierModel;
 using TcAuthentication.Logging;
+using static Controls.Helpers.JsonClasses;
 
-namespace Microsoft.AspNetCore.Authentication.Personal
+namespace TcAuthentication.Personal
 {
     /// <summary>
     /// A per-request authentication handler for the PersonalAuthenticationMiddleware.
@@ -37,8 +43,8 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         private PersonalConfiguration _configuration;
 
         protected HttpClient Backchannel => Options.Backchannel;
-
         protected HtmlEncoder HtmlEncoder { get; }
+        private static string Secret = "27FB803228D498842D1D46693B93443F9B422D3BFF1007645E04AF9E1F865F6E"; // "XCAP05H6LoKvbRRa/QkqLNMI7cOHguaRyHzyg7n5qEkGjQmtBhz4SzYh4Fqwjyi3KJHlSXKPwVu2+bXr6CtpgQ==";
 
         public PersonalHandler(IOptionsMonitor<PersonalOptions> options, ILoggerFactory logger, HtmlEncoder htmlEncoder, UrlEncoder encoder, ISystemClock clock)
             : base(options, logger, encoder, clock)
@@ -50,7 +56,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// The handler calls methods on the events which give the application control at certain points where processing is occurring.
         /// If it is not provided a default instance is supplied which does nothing when the methods are called.
         /// </summary>
-        /*
+        
         protected new PersonalEvents Events
         {
             get { return (PersonalEvents)base.Events; }
@@ -58,7 +64,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         }
 
         protected override Task<object> CreateEventsAsync() => Task.FromResult<object>(new PersonalEvents());
-        */
+
         public override Task<bool> HandleRequestAsync()
         {
             if (Options.RemoteSignOutPath.HasValue && Options.RemoteSignOutPath == Request.Path)
@@ -69,8 +75,106 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             {
                 return HandleSignOutCallbackAsync();
             }
+            return HandleRemoteAsync();
+        }
 
-            return base.HandleRequestAsync();
+        public async Task<bool> HandleRemoteAsync()
+        { 
+
+            if (Options?.CallbackPath != Request.Path)  // TODO - check security state
+            {
+                return false;
+            }
+
+            AuthenticationTicket ticket = null;
+            Exception exception = null;
+            try
+            {
+                var authResult = await HandleRemoteAuthenticateAsync();
+                if (authResult == null)
+                {
+                    exception = new InvalidOperationException("Invalid return state, unable to redirect.");
+                }
+                else if (authResult.Handled)
+                {
+                    return true;
+                }
+                else if (authResult.Skipped || authResult.None)
+                {
+                    return false;
+                }
+                else if (!authResult.Succeeded)
+                {
+                    exception = authResult.Failure ??
+                                new InvalidOperationException("Invalid return state, unable to redirect.");
+                }
+
+                ticket = authResult.Ticket;
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            if (exception != null)
+            {
+                Logger.RemoteAuthenticationError(exception.Message);
+                var errorContext = new RemoteFailureContext(Context, Scheme, Options, exception);
+                await Events.RemoteFailure(errorContext);
+
+                if (errorContext.Result != null)
+                {
+                    if (errorContext.Result.Handled)
+                    {
+                        return true;
+                    }
+                    else if (errorContext.Result.Skipped)
+                    {
+                        return false;
+                    }
+                }
+
+                throw exception;
+            }
+
+            // We have a ticket if we get here
+            var ticketContext = new TicketReceivedContext(Context, Scheme, Options, ticket)
+            {
+                ReturnUri = ticket.Properties.RedirectUri
+            };
+            // REVIEW: is this safe or good?
+            ticket.Properties.RedirectUri = null;
+
+            // Mark which provider produced this identity so we can cross-check later in HandleAuthenticateAsync
+            ticketContext.Properties.Items[".AuthScheme"] = Scheme.Name;
+
+            await Events.TicketReceived(ticketContext);
+
+            if (ticketContext.Result != null)
+            {
+                if (ticketContext.Result.Handled)
+                {
+                    Logger.SigninHandled();
+                    return true;
+                }
+                else if (ticketContext.Result.Skipped)
+                {
+                    Logger.SigninSkipped();
+                    return false;
+                }
+            }
+
+            await Context.SignInAsync(SignInScheme, ticketContext.Principal, ticketContext.Properties);
+
+            // Default redirect path is the base path
+            if (string.IsNullOrEmpty(ticketContext.ReturnUri))
+            {
+                ticketContext.ReturnUri = "/";
+            }
+
+            Response.Redirect(ticketContext.ReturnUri);
+            return true;
+
         }
 
         protected virtual async Task<bool> HandleRemoteSignOutAsync()
@@ -310,7 +414,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// <returns></returns>
         protected override async Task HandleChallengeAsync(AuthenticationProperties properties)
         {
-            Logger.EnteringOpenIdAuthenticationHandlerHandleUnauthorizedAsync(GetType().FullName);
+     //       Logger.EnteringOpenIdAuthenticationHandlerHandleUnauthorizedAsync(GetType().FullName);
 
             // order for local RedirectUri
             // 1. challenge.Properties.RedirectUri
@@ -326,7 +430,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 _configuration = await Options.ConfigurationManager.GetConfigurationAsync();
             }
 
-            var message = new OpenIdConnectMessage
+            var message = new OpenIdConnectMessage     //this is the authorization request to be sent to subject for redirection to OP
             {
                 ClientId = Options.ClientId,
                 EnableTelemetryParameters = !Options.DisableTelemetry,
@@ -334,6 +438,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 RedirectUri = BuildRedirectUri(Options.CallbackPath),
                 Resource = Options.Resource,
                 ResponseType = Options.ResponseType,
+                ResponseMode = "query",  // this is declared insecure - that that is for referer - no other way to get idtoken back here in GET - TODO - use form_post
                 Scope = "openid",
                 Nonce = "OS6_WzA2Mj",
                 State = "af0ifjsldky  HTTP/1.1"  //  I added these to get the ball rolling
@@ -434,16 +539,24 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         protected override async Task<HandleRequestResult> HandleRemoteAuthenticateAsync()
         {
             Logger.EnteringOpenIdAuthenticationHandlerHandleRemoteAuthenticateAsync(GetType().FullName);
- //           return HandleRequestResult.SkipHandler();  /// TEMP  TODO remove this  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-            OpenIdConnectMessage authorizationResponse = null;
+            PortableMessage authorizationResponse = null;
 
-            if (string.Equals(Request.Method, "GET", StringComparison.OrdinalIgnoreCase))
+            // debug code
+            string displayUrl = UriHelper.GetDisplayUrl(Request);
+            string encodedUrl = UriHelper.GetEncodedUrl(Request);
+
+            if (string.Equals(Request.Method, "GET", StringComparison.OrdinalIgnoreCase))  // TODO add form post method
             {
-                authorizationResponse = new OpenIdConnectMessage(Request.Query.Select(pair => new KeyValuePair<string, string[]>(pair.Key, pair.Value)));
+                if (Request.Query.Count < 1)
+                {
+                    throw new Exception("No query string present on GET to signin (oisi)");   //  TODO use existing exception handler
+                }
+                authorizationResponse = new PortableMessage(Request.Query.Select(pair => new KeyValuePair<string, string[]>(pair.Key, pair.Value)));
 
                 // response_mode=query (explicit or not) and a response_type containing id_token
                 // or token are not considered as a safe combination and MUST be rejected.
                 // See http://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Security
+                /*   ---   removed test becasue i cannot get a fragment into aspnetcore - it has been disabled!!
                 if (!string.IsNullOrEmpty(authorizationResponse.IdToken) || !string.IsNullOrEmpty(authorizationResponse.AccessToken))
                 {
                     if (Options.SkipUnrecognizedRequests)
@@ -454,6 +567,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     return HandleRequestResult.Fail("An OpenID Connect response cannot contain an " +
                             "identity token or an access token when using response_mode=query");
                 }
+                */
             }
             // assumption: if the ContentType is "application/x-www-form-urlencoded" it should be safe to read as it is small.
             else if (string.Equals(Request.Method, "POST", StringComparison.OrdinalIgnoreCase)
@@ -463,7 +577,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
               && Request.Body.CanRead)
             {
                 var form = await Request.ReadFormAsync();
-                authorizationResponse = new OpenIdConnectMessage(form.Select(pair => new KeyValuePair<string, string[]>(pair.Key, pair.Value)));
+                authorizationResponse = new PortableMessage(form.Select(pair => new KeyValuePair<string, string[]>(pair.Key, pair.Value)));
             }
 
             if (authorizationResponse == null)
@@ -476,25 +590,25 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 return HandleRequestResult.Fail("No message.");
             }
 
-            return HandleRequestResult.Fail("Not implemented yet.");    /// TEMP  TODO remove this  QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
-            /*
+
             AuthenticationProperties properties = null;
             try
             {
                 properties = ReadPropertiesAndClearState(authorizationResponse);
-
                 var messageReceivedContext = await RunMessageReceivedEventAsync(authorizationResponse, properties);
                 if (messageReceivedContext.Result != null)
                 {
                     return messageReceivedContext.Result;
                 }
+                
                 authorizationResponse = messageReceivedContext.ProtocolMessage;
                 properties = messageReceivedContext.Properties;
 
                 if (properties == null)
                 {
                     // Fail if state is missing, it's required for the correlation id.
-                    if (string.IsNullOrEmpty(authorizationResponse.State))
+                    List<object> state = authorizationResponse.Get("state");
+                    if (state.Count == 0)
                     {
                         // This wasn't a valid OIDC message, it may not have been intended for us.
                         Logger.NullOrEmptyAuthorizationResponseState();
@@ -502,12 +616,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                         {
                             return HandleRequestResult.SkipHandler();
                         }
-                        return HandleRequestResult.Fail(Resources.MessageStateIsNullOrEmpty);
+                        return HandleRequestResult.Fail("MessageStateIsNullOrEmpty");
                     }
 
                     properties = ReadPropertiesAndClearState(authorizationResponse);
                 }
-
+                
                 if (properties == null)
                 {
                     Logger.UnableToReadAuthorizationResponseState();
@@ -518,9 +632,9 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     }
 
                     // if state exists and we failed to 'unprotect' this is not a message we should process.
-                    return HandleRequestResult.Fail(Resources.MessageStateIsInvalid);
+                    return HandleRequestResult.Fail("MessageStateIsInvalid");
                 }
-
+                /*
                 if (!ValidateCorrelationId(properties))
                 {
                     return HandleRequestResult.Fail("Correlation failed.", properties);
@@ -547,26 +661,43 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     Logger.UpdatingConfiguration();
                     _configuration = await Options.ConfigurationManager.GetConfigurationAsync(Context.RequestAborted);
                 }
-                
+                */
                 PopulateSessionProperties(authorizationResponse, properties);
-
+                
                 ClaimsPrincipal user = null;
                 JwtSecurityToken jwt = null;
                 string nonce = null;
-                var validationParameters = Options.TokenValidationParameters.Clone();
+
+                //  TODO  hack
+                var securekey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("27FB803228D498842D1D46693B93443F9B422D3BFF1007645E04AF9E1F865F6E"));
+                var creds = new SigningCredentials(securekey, SecurityAlgorithms.HmacSha256);
+
+                TokenValidationParameters validationParameters = new TokenValidationParameters()
+                {
+                    RequireExpirationTime = true,
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    IssuerSigningKey = creds.Key  // new SymmetricSecurityKey(Convert.FromBase64String(Secret))
+                };
 
                 // Hybrid or Implicit flow
-                if (!string.IsNullOrEmpty(authorizationResponse.IdToken))
+                List<object> IdTokens = authorizationResponse.Get("id_token");
+                if (IdTokens.Count>0)
                 {
-                    Logger.ReceivedIdToken();
-                    user = ValidateToken(authorizationResponse.IdToken, properties, validationParameters, out jwt);
+                    Type tIdToken = IdTokens[0].GetType();
 
+                    string IdToken = IdTokens[0].ToString();
+                    if (IdTokens[0] is string[]) { IdToken = (IdTokens[0] as string[])[0]; }
+          
+                    Logger.ReceivedIdToken();
+                    user = ValidateToken(IdToken, properties, validationParameters, out jwt);
+                    
                     nonce = jwt.Payload.Nonce;
                     if (!string.IsNullOrEmpty(nonce))
                     {
                         nonce = ReadNonceCookie(nonce);
                     }
-
+                    
                     var tokenValidatedContext = await RunTokenValidatedEventAsync(authorizationResponse, null, user, properties, jwt, nonce);
                     if (tokenValidatedContext.Result != null)
                     {
@@ -578,7 +709,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     jwt = tokenValidatedContext.SecurityToken;
                     nonce = tokenValidatedContext.Nonce;
                 }
-
+                /* varify that id_token is compliant
                 Options.ProtocolValidator.ValidateAuthenticationResponse(new PersonalProtocolValidationContext()
                 {
                     ClientId = Options.ClientId,
@@ -586,112 +717,116 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                     ValidatedIdToken = jwt,
                     Nonce = nonce
                 });
+                */
 
-                OpenIdConnectMessage tokenEndpointResponse = null;
+                PortableMessage tokenEndpointResponse = null;
+                /*
+                                // Authorization Code or Hybrid flow
+                                if (!string.IsNullOrEmpty(authorizationResponse.Code))
+                                {
+                                    var authorizationCodeReceivedContext = await RunAuthorizationCodeReceivedEventAsync(authorizationResponse, user, properties, jwt);
+                                    if (authorizationCodeReceivedContext.Result != null)
+                                    {
+                                        return authorizationCodeReceivedContext.Result;
+                                    }
+                                    authorizationResponse = authorizationCodeReceivedContext.ProtocolMessage;
+                                    user = authorizationCodeReceivedContext.Principal;
+                                    properties = authorizationCodeReceivedContext.Properties;
+                                    var tokenEndpointRequest = authorizationCodeReceivedContext.TokenEndpointRequest;
+                                    // If the developer redeemed the code themselves...
+                                    tokenEndpointResponse = authorizationCodeReceivedContext.TokenEndpointResponse;
+                                    jwt = authorizationCodeReceivedContext.JwtSecurityToken;
 
-                // Authorization Code or Hybrid flow
-                if (!string.IsNullOrEmpty(authorizationResponse.Code))
-                {
-                    var authorizationCodeReceivedContext = await RunAuthorizationCodeReceivedEventAsync(authorizationResponse, user, properties, jwt);
-                    if (authorizationCodeReceivedContext.Result != null)
-                    {
-                        return authorizationCodeReceivedContext.Result;
-                    }
-                    authorizationResponse = authorizationCodeReceivedContext.ProtocolMessage;
-                    user = authorizationCodeReceivedContext.Principal;
-                    properties = authorizationCodeReceivedContext.Properties;
-                    var tokenEndpointRequest = authorizationCodeReceivedContext.TokenEndpointRequest;
-                    // If the developer redeemed the code themselves...
-                    tokenEndpointResponse = authorizationCodeReceivedContext.TokenEndpointResponse;
-                    jwt = authorizationCodeReceivedContext.JwtSecurityToken;
+                                    if (!authorizationCodeReceivedContext.HandledCodeRedemption)
+                                    {
+                                        tokenEndpointResponse = await RedeemAuthorizationCodeAsync(tokenEndpointRequest);
+                                    }
 
-                    if (!authorizationCodeReceivedContext.HandledCodeRedemption)
-                    {
-                        tokenEndpointResponse = await RedeemAuthorizationCodeAsync(tokenEndpointRequest);
-                    }
+                                    var tokenResponseReceivedContext = await RunTokenResponseReceivedEventAsync(authorizationResponse, tokenEndpointResponse, user, properties);
+                                    if (tokenResponseReceivedContext.Result != null)
+                                    {
+                                        return tokenResponseReceivedContext.Result;
+                                    }
 
-                    var tokenResponseReceivedContext = await RunTokenResponseReceivedEventAsync(authorizationResponse, tokenEndpointResponse, user, properties);
-                    if (tokenResponseReceivedContext.Result != null)
-                    {
-                        return tokenResponseReceivedContext.Result;
-                    }
+                                    authorizationResponse = tokenResponseReceivedContext.ProtocolMessage;
+                                    tokenEndpointResponse = tokenResponseReceivedContext.TokenEndpointResponse;
+                                    user = tokenResponseReceivedContext.Principal;
+                                    properties = tokenResponseReceivedContext.Properties;
 
-                    authorizationResponse = tokenResponseReceivedContext.ProtocolMessage;
-                    tokenEndpointResponse = tokenResponseReceivedContext.TokenEndpointResponse;
-                    user = tokenResponseReceivedContext.Principal;
-                    properties = tokenResponseReceivedContext.Properties;
+                                    // no need to validate signature when token is received using "code flow" as per spec
+                                    // [http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation].
+                                    validationParameters.RequireSignedTokens = false;
 
-                    // no need to validate signature when token is received using "code flow" as per spec
-                    // [http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation].
-                    validationParameters.RequireSignedTokens = false;
+                                    // At least a cursory validation is required on the new IdToken, even if we've already validated the one from the authorization response.
+                                    // And we'll want to validate the new JWT in ValidateTokenResponse.
+                                    var tokenEndpointUser = ValidateToken(tokenEndpointResponse.IdToken, properties, validationParameters, out var tokenEndpointJwt);
 
-                    // At least a cursory validation is required on the new IdToken, even if we've already validated the one from the authorization response.
-                    // And we'll want to validate the new JWT in ValidateTokenResponse.
-                    var tokenEndpointUser = ValidateToken(tokenEndpointResponse.IdToken, properties, validationParameters, out var tokenEndpointJwt);
+                                    // Avoid reading & deleting the nonce cookie, running the event, etc, if it was already done as part of the authorization response validation.
+                                    if (user == null)
+                                    {
+                                        nonce = tokenEndpointJwt.Payload.Nonce;
+                                        if (!string.IsNullOrEmpty(nonce))
+                                        {
+                                            nonce = ReadNonceCookie(nonce);
+                                        }
 
-                    // Avoid reading & deleting the nonce cookie, running the event, etc, if it was already done as part of the authorization response validation.
-                    if (user == null)
-                    {
-                        nonce = tokenEndpointJwt.Payload.Nonce;
-                        if (!string.IsNullOrEmpty(nonce))
-                        {
-                            nonce = ReadNonceCookie(nonce);
-                        }
+                                        var tokenValidatedContext = await RunTokenValidatedEventAsync(authorizationResponse, tokenEndpointResponse, tokenEndpointUser, properties, tokenEndpointJwt, nonce);
+                                        if (tokenValidatedContext.Result != null)
+                                        {
+                                            return tokenValidatedContext.Result;
+                                        }
+                                        authorizationResponse = tokenValidatedContext.ProtocolMessage;
+                                        tokenEndpointResponse = tokenValidatedContext.TokenEndpointResponse;
+                                        user = tokenValidatedContext.Principal;
+                                        properties = tokenValidatedContext.Properties;
+                                        jwt = tokenValidatedContext.SecurityToken;
+                                        nonce = tokenValidatedContext.Nonce;
+                                    }
+                                    else
+                                    {
+                                        if (!string.Equals(jwt.Subject, tokenEndpointJwt.Subject, StringComparison.Ordinal))
+                                        {
+                                            throw new SecurityTokenException("The sub claim does not match in the id_token's from the authorization and token endpoints.");
+                                        }
 
-                        var tokenValidatedContext = await RunTokenValidatedEventAsync(authorizationResponse, tokenEndpointResponse, tokenEndpointUser, properties, tokenEndpointJwt, nonce);
-                        if (tokenValidatedContext.Result != null)
-                        {
-                            return tokenValidatedContext.Result;
-                        }
-                        authorizationResponse = tokenValidatedContext.ProtocolMessage;
-                        tokenEndpointResponse = tokenValidatedContext.TokenEndpointResponse;
-                        user = tokenValidatedContext.Principal;
-                        properties = tokenValidatedContext.Properties;
-                        jwt = tokenValidatedContext.SecurityToken;
-                        nonce = tokenValidatedContext.Nonce;
-                    }
-                    else
-                    {
-                        if (!string.Equals(jwt.Subject, tokenEndpointJwt.Subject, StringComparison.Ordinal))
-                        {
-                            throw new SecurityTokenException("The sub claim does not match in the id_token's from the authorization and token endpoints.");
-                        }
+                                        jwt = tokenEndpointJwt;
+                                    }
 
-                        jwt = tokenEndpointJwt;
-                    }
+                                    // Validate the token response if it wasn't provided manually
+                                    if (!authorizationCodeReceivedContext.HandledCodeRedemption)
+                                    {
+                                        Options.ProtocolValidator.ValidateTokenResponse(new PersonalProtocolValidationContext()
+                                        {
+                                            ClientId = Options.ClientId,
+                                            ProtocolMessage = tokenEndpointResponse,
+                                            ValidatedIdToken = jwt,
+                                            Nonce = nonce
+                                        });
+                                    }
+                                }
 
-                    // Validate the token response if it wasn't provided manually
-                    if (!authorizationCodeReceivedContext.HandledCodeRedemption)
-                    {
-                        Options.ProtocolValidator.ValidateTokenResponse(new PersonalProtocolValidationContext()
-                        {
-                            ClientId = Options.ClientId,
-                            ProtocolMessage = tokenEndpointResponse,
-                            ValidatedIdToken = jwt,
-                            Nonce = nonce
-                        });
-                    }
-                }
+                                if (Options.SaveTokens)
+                                {
+                                    SaveTokens(properties, tokenEndpointResponse ?? authorizationResponse);
+                                }
 
-                if (Options.SaveTokens)
-                {
-                    SaveTokens(properties, tokenEndpointResponse ?? authorizationResponse);
-                }
+                                if (Options.GetClaimsFromUserInfoEndpoint)
+                                {
+                                    return await GetUserInformationAsync(tokenEndpointResponse ?? authorizationResponse, jwt, user, properties);
+                                }
+                                else
+                                {
+                                    var identity = (ClaimsIdentity)user.Identity;
+                                    foreach (var action in Options.ClaimActions)
+                                    {
+                                        action.Run(null, identity, ClaimsIssuer);
+                                    }
 
-                if (Options.GetClaimsFromUserInfoEndpoint)
-                {
-                    return await GetUserInformationAsync(tokenEndpointResponse ?? authorizationResponse, jwt, user, properties);
-                }
-                else
-                {
-                    var identity = (ClaimsIdentity)user.Identity;
-                    foreach (var action in Options.ClaimActions)
-                    {
-                        action.Run(null, identity, ClaimsIssuer);
-                    }
-                }
-
-                return HandleRequestResult.Success(new AuthenticationTicket(user, properties, Scheme.Name));
+                                }
+                                 */
+                AuthenticationTicket at = new AuthenticationTicket(user, properties, Scheme.Name);
+                HandleRequestResult hrr = HandleRequestResult.Success(at);
+                return hrr;
             
             }
             catch (Exception exception)
@@ -699,6 +834,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 Logger.ExceptionProcessingMessage(exception);
 
                 // Refresh the configuration for exceptions that may be caused by key rollovers. The user can also request a refresh in the event.
+                /*
                 if (Options.RefreshOnIssuerKeyNotFound && exception is SecurityTokenSignatureKeyNotFoundException)
                 {
                     if (Options.ConfigurationManager != null)
@@ -713,13 +849,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 {
                     return authenticationFailedContext.Result;
                 }
-
+                */
                 return HandleRequestResult.Fail(exception, properties);
             }
-    */
         }
 
-        private AuthenticationProperties ReadPropertiesAndClearState(OpenIdConnectMessage message)
+        private AuthenticationProperties ReadPropertiesAndClearState(PortableMessage message)
         {
             AuthenticationProperties properties = null;
             if (!string.IsNullOrEmpty(message.State))
@@ -736,7 +871,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             return properties;
         }
 
-        private void PopulateSessionProperties(OpenIdConnectMessage message, AuthenticationProperties properties)
+        private void PopulateSessionProperties(PortableMessage message, AuthenticationProperties properties)
         {
             /*
             if (!string.IsNullOrEmpty(message.SessionState))
@@ -807,7 +942,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// <param name="properties">The authentication properties.</param>
         /// <returns><see cref="HandleRequestResult"/> which is used to determine if the remote authentication was successful.</returns>
         protected virtual async Task<HandleRequestResult> GetUserInformationAsync(
-            OpenIdConnectMessage message, JwtSecurityToken jwt,
+            PortableMessage message, JwtSecurityToken jwt,
             ClaimsPrincipal principal, AuthenticationProperties properties)
         {
             var userInfoEndpoint = _configuration?.UserInfoEndpoint;
@@ -817,14 +952,15 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 Logger.UserInfoEndpointNotSet();
                 return HandleRequestResult.Success(new AuthenticationTicket(principal, properties, Scheme.Name));
             }
-            if (string.IsNullOrEmpty(message.AccessToken))
+            List<object> accessToken = message.Get("access_token");
+            if (accessToken.Count == 0)
             {
                 Logger.AccessTokenNotAvailable();
                 return HandleRequestResult.Success(new AuthenticationTicket(principal, properties, Scheme.Name));
             }
             Logger.RetrievingClaims();
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, userInfoEndpoint);
-            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", message.AccessToken);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", (accessToken[0] as string));
             var responseMessage = await Backchannel.SendAsync(requestMessage);
             responseMessage.EnsureSuccessStatusCode();
             var userInfoResponse = await responseMessage.Content.ReadAsStringAsync();
@@ -844,8 +980,9 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             {
                 return HandleRequestResult.Fail("Unknown response type: " + contentType.MediaType, properties);
             }
-            /*
+            
             var userInformationReceivedContext = await RunUserInformationReceivedEventAsync(principal, properties, message, user);
+            /*
             if (userInformationReceivedContext.Result != null)
             {
                 return userInformationReceivedContext.Result;
@@ -1001,16 +1138,16 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 return Options.StateDataFormat.Unprotect(Uri.UnescapeDataString(state.Substring(authenticationIndex, endIndex).Replace('+', ' ')));
             }
         }
-        /*
-        private async Task<MessageReceivedContext> RunMessageReceivedEventAsync(OpenIdConnectMessage message, AuthenticationProperties properties)
+        
+        private async Task<MessageReceivedContext> RunMessageReceivedEventAsync(PortableMessage message, AuthenticationProperties properties)
         {
-            Logger.MessageReceived(message.BuildRedirectUrl());
+//            Logger.MessageReceived(message.BuildRedirectUrl());
             var context = new MessageReceivedContext(Context, Scheme, Options, properties)
             {
                 ProtocolMessage = message,
             };
 
-            await Events.MessageReceived(context);
+    //        await Events.MessageReceived(context);
             if (context.Result != null)
             {
                 if (context.Result.Handled)
@@ -1026,9 +1163,9 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             return context;
         }
         
-        private async Task<TokenValidatedContext> RunTokenValidatedEventAsync(OpenIdConnectMessage authorizationResponse, OpenIdConnectMessage tokenEndpointResponse, ClaimsPrincipal user, AuthenticationProperties properties, JwtSecurityToken jwt, string nonce)
+        private async Task<TokenValidatedContext> RunTokenValidatedEventAsync(PortableMessage authorizationResponse, PortableMessage tokenEndpointResponse, ClaimsPrincipal user, AuthenticationProperties properties, JwtSecurityToken jwt, string nonce)
         {
-            var context = new TokenValidatedContext(Context, Scheme, Options, user, properties)
+            TokenValidatedContext context = new TokenValidatedContext(Context, Scheme, Options, user, properties)
             {
                 ProtocolMessage = authorizationResponse,
                 TokenEndpointResponse = tokenEndpointResponse,
@@ -1036,9 +1173,11 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 Nonce = nonce,
             };
 
-            await Events.TokenValidated(context);
+  //          await Events.TokenValidated(context);
+
+ //           if (context.Result == null) { await Task.Delay(TimeSpan.FromMilliseconds(1)); }
             if (context.Result != null)
-            {
+                {
                 if (context.Result.Handled)
                 {
                     Logger.TokenValidatedHandledResponse();
@@ -1051,7 +1190,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             return context;
         }
-
+        /*
         private async Task<AuthorizationCodeReceivedContext> RunAuthorizationCodeReceivedEventAsync(OpenIdConnectMessage authorizationResponse, ClaimsPrincipal user, AuthenticationProperties properties, JwtSecurityToken jwt)
         {
             Logger.AuthorizationCodeReceived();
@@ -1119,8 +1258,8 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             return context;
         }
-        
-        private async Task<UserInformationReceivedContext> RunUserInformationReceivedEventAsync(ClaimsPrincipal principal, AuthenticationProperties properties, OpenIdConnectMessage message, JObject user)
+        */
+        private async Task<UserInformationReceivedContext> RunUserInformationReceivedEventAsync(ClaimsPrincipal principal, AuthenticationProperties properties, PortableMessage message, JObject user)
         {
             Logger.UserInformationReceived(user.ToString());
 
@@ -1130,7 +1269,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                 User = user,
             };
 
-            await Events.UserInformationReceived(context);
+ //           await Events.UserInformationReceived(context);
             if (context.Result != null)
             {
                 if (context.Result.Handled)
@@ -1145,7 +1284,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             return context;
         }
-
+        /*
         private async Task<AuthenticationFailedContext> RunAuthenticationFailedEventAsync(OpenIdConnectMessage message, Exception exception)
         {
             var context = new AuthenticationFailedContext(Context, Scheme, Options)
@@ -1169,14 +1308,15 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             return context;
         }
-        
+        */
         // Note this modifies properties if Options.UseTokenLifetime
+        // here is the core problem - this method is designed to returen a principal - which is not exactly what we really want - can we deal with it for this rp?
         private ClaimsPrincipal ValidateToken(string idToken, AuthenticationProperties properties, TokenValidationParameters validationParameters, out JwtSecurityToken jwt)
         {
             if (!Options.SecurityTokenValidator.CanReadToken(idToken))
             {
                 Logger.UnableToReadIdToken(idToken);
-                throw new SecurityTokenException(string.Format(CultureInfo.InvariantCulture, Resources.UnableToValidateToken, idToken));
+                throw new SecurityTokenException(string.Format(CultureInfo.InvariantCulture, "Unable To Validate Token", idToken));
             }
 
             if (_configuration != null)
@@ -1193,13 +1333,13 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             if (jwt == null)
             {
                 Logger.InvalidSecurityTokenType(validatedToken?.GetType().ToString());
-                throw new SecurityTokenException(string.Format(CultureInfo.InvariantCulture, Resources.ValidatedSecurityTokenNotJwt, validatedToken?.GetType()));
+                throw new SecurityTokenException(string.Format(CultureInfo.InvariantCulture, "ValidatedSecurityTokenNotJwt", validatedToken?.GetType()));
             }
 
             if (validatedToken == null)
             {
                 Logger.UnableToValidateIdToken(idToken);
-                throw new SecurityTokenException(string.Format(CultureInfo.InvariantCulture, Resources.UnableToValidateToken, idToken));
+                throw new SecurityTokenException(string.Format(CultureInfo.InvariantCulture, "UnableToValidateToken", idToken));
             }
 
             if (Options.UseTokenLifetime)
@@ -1219,7 +1359,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
 
             return principal;
         }
-        */
+
         /// <summary>
         /// Build a redirect path if the given path is a relative path.
         /// </summary>

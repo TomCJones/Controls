@@ -1,0 +1,95 @@
+        {
+            if (!await ShouldHandleRequestAsync())
+            {
+                return false;
+            }
+
+            AuthenticationTicket ticket = null;
+            Exception exception = null;
+            try
+            {
+                var authResult = await HandleRemoteAuthenticateAsync();
+                if (authResult == null)
+                {
+                    exception = new InvalidOperationException("Invalid return state, unable to redirect.");
+                }
+                else if (authResult.Handled)
+                {
+                    return true;
+                }
+                else if (authResult.Skipped || authResult.None)
+                {
+                    return false;
+                }
+                else if (!authResult.Succeeded)
+                {
+                    exception = authResult.Failure ??
+                                new InvalidOperationException("Invalid return state, unable to redirect.");
+                }
+
+                ticket = authResult.Ticket;
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            if (exception != null)
+            {
+                Logger.RemoteAuthenticationError(exception.Message);
+                var errorContext = new RemoteFailureContext(Context, Scheme, Options, exception);
+                await Events.RemoteFailure(errorContext);
+
+                if (errorContext.Result != null)
+                {
+                    if (errorContext.Result.Handled)
+                    {
+                        return true;
+                    }
+                    else if (errorContext.Result.Skipped)
+                    {
+                        return false;
+                    }
+                }
+
+                throw exception;
+            }
+
+            // We have a ticket if we get here
+            var ticketContext = new TicketReceivedContext(Context, Scheme, Options, ticket)
+            {
+                ReturnUri = ticket.Properties.RedirectUri
+            };
+            // REVIEW: is this safe or good?
+            ticket.Properties.RedirectUri = null;
+
+            // Mark which provider produced this identity so we can cross-check later in HandleAuthenticateAsync
+            ticketContext.Properties.Items[AuthSchemeKey] = Scheme.Name;
+
+            await Events.TicketReceived(ticketContext);
+
+            if (ticketContext.Result != null)
+            {
+                if (ticketContext.Result.Handled)
+                {
+                    Logger.SigninHandled();
+                    return true;
+                }
+                else if (ticketContext.Result.Skipped)
+                {
+                    Logger.SigninSkipped();
+                    return false;
+                }
+            }
+
+            await Context.SignInAsync(SignInScheme, ticketContext.Principal, ticketContext.Properties);
+
+            // Default redirect path is the base path
+            if (string.IsNullOrEmpty(ticketContext.ReturnUri))
+            {
+                ticketContext.ReturnUri = "/";
+            }
+
+            Response.Redirect(ticketContext.ReturnUri);
+            return true;
+        }

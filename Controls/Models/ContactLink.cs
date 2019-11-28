@@ -11,6 +11,9 @@ namespace Controls.Models
 
     public class ContactLink
     {
+        /// <summary>
+        /// conrol the means to contact a user for redress & recovery
+        /// </summary>
         public ContactLink()
         {
             Id = Guid.NewGuid().ToString();

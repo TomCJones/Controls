@@ -1,6 +1,6 @@
 ﻿// PersonalDefaults.cs Copyright (c) tomjones.us
 
-namespace Microsoft.AspNetCore.Authentication.Personal
+namespace TcAuthentication.Personal
 {
     /// <summary>
     /// Default values related to Personal authentication handler

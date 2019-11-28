@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Controls</title>
+    <title>Controls @ViewData["Title"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -32,6 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Client/Index">Solutions</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
@@ -49,7 +52,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - <a href="http://tomjones.us">tomjones.us</a> - build @System.Reflection.Assembly.GetEntryAssembly().GetName().Version - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2019 - 
+            <a href="http://tomjones.us">tomjones.us</a>
+            - build @System.Reflection.Assembly.GetEntryAssembly().GetName().Version - 
+            <a asp-area="" asp-page="/Privacy">Privacy</a>
             <!-- @Context.Request.Headers["User-Agent"] -->
         </div>
         </footer>

@@ -1,9 +1,9 @@
 ﻿// PersonalExtensions.cs copyright (c) tomjones.us
 using System;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Personal;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using TcAuthentication.Personal;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

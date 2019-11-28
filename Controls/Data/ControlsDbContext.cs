@@ -13,6 +13,8 @@ namespace Controls.Data
             : base(options)
         {
         }
-        public DbSet<ContactLink> contactLinks { get; set; }
+        public DbSet<ContactLink> contactLinks { get; set; }  // means to contact a user of this site
+        public DbSet<Client> clients { get; set; }            // reference to one client data location
+        public DbSet<Request> requests { get; set; }          // reqest to access a client data location
     }
 }

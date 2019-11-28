@@ -6,11 +6,11 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.Internal;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Protocols;
+using Microsoft.AspNetCore.Authentication;
 using TcAuthentication.IdentifierModel;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Microsoft.AspNetCore.Authentication.Personal
+namespace TcAuthentication.Personal
 {
     /// <summary>
     /// Configuration options for <see cref="PersonalHandler"/>
@@ -264,7 +264,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
         /// Gets or sets the parameters used to validate identity tokens.
         /// </summary>
         /// <remarks>Contains the types and definitions required for validating a token.</remarks>
-        public TokenValidationParameters TokenValidationParameters { get; set; } = new TokenValidationParameters();
+ //       public TokenValidationParameters TokenValidationParameters { get; set; } = new TokenValidationParameters();
 
         /// <summary>
         /// Indicates that the authentication session lifetime (e.g. cookies) should match that of the authentication token.

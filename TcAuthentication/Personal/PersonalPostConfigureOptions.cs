@@ -3,12 +3,12 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Protocols;
 using TcAuthentication.IdentifierModel;
 
-namespace Microsoft.AspNetCore.Authentication.Personal
+namespace TcAuthentication.Personal
 {
     /// <summary>
     /// Used to setup defaults for all <see cref="PersonalOptions"/>.
@@ -35,34 +35,29 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             {
                 options.SignOutScheme = options.SignInScheme;
             }
-
+            
             if (options.StateDataFormat == null)
             {
-                var dataProtector = options.DataProtectionProvider.CreateProtector(
+               var dataProtector = options.DataProtectionProvider.CreateProtector(
                     typeof(PersonalHandler).FullName, name, "v1");
                 options.StateDataFormat = new PropertiesDataFormat(dataProtector);
             }
-
+            /*
             if (options.StringDataFormat == null)
             {
-                var dataProtector = options.DataProtectionProvider.CreateProtector(
-                    typeof(PersonalHandler).FullName,
-                    typeof(string).FullName,
-                    name,
-                    "v1");
+   //             var dataProtector = options.DataProtectionProvider.CreateProtector(
+   //                 typeof(PersonalHandler).FullName,
+   //                 typeof(string).FullName,
+   //                 name,
+   //                 "v1");
 
                 options.StringDataFormat = new SecureDataFormat<string>(new StringSerializer(), dataProtector);
             }
-
-            if (string.IsNullOrEmpty(options.TokenValidationParameters.ValidAudience) && !string.IsNullOrEmpty(options.ClientId))
-            {
-                options.TokenValidationParameters.ValidAudience = options.ClientId;
-            }
-
+ */
             if (options.Backchannel == null)
             {
                 options.Backchannel = new HttpClient(options.BackchannelHttpHandler ?? new HttpClientHandler());
-                options.Backchannel.DefaultRequestHeaders.UserAgent.ParseAdd("TcAuthentication Personal handler");
+                options.Backchannel.DefaultRequestHeaders.UserAgent.ParseAdd("TC Authentication Personal Authenticator handler");
                 options.Backchannel.Timeout = options.BackchannelTimeout;
                 options.Backchannel.MaxResponseContentBufferSize = 1024 * 1024 * 10; // 10 MB
             }
@@ -71,7 +66,7 @@ namespace Microsoft.AspNetCore.Authentication.Personal
             {
                 if (options.Configuration != null)
                 {
-                    options.ConfigurationManager = new PersonalConfigurationRetriever(options.ConfigurationLocation);
+                    options.ConfigurationManager = new PersonalConfigurationRetriever(options);
                 }
                 else if (!(string.IsNullOrEmpty(options.MetadataAddress) && string.IsNullOrEmpty(options.Authority)))
                 {
@@ -86,12 +81,12 @@ namespace Microsoft.AspNetCore.Authentication.Personal
                         options.MetadataAddress += ".well-known/openid-configuration";
                     }
 
-                    if (options.RequireHttpsMetadata && !options.MetadataAddress.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                    if (options.RequireHttpsMetadata && !options.MetadataAddress.StartsWith("https://", StringComparison.OrdinalIgnoreCase))  //
                     {
  //                       throw new InvalidOperationException("The MetadataAddress or Authority must use HTTPS unless disabled for development by setting RequireHttpsMetadata=false.");
                     }
 
-                    options.ConfigurationManager = new PersonalConfigurationRetriever(options.ConfigurationLocation);
+                    options.ConfigurationManager = new PersonalConfigurationRetriever(options);
                 }
             }
         }

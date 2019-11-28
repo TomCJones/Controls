@@ -57,8 +57,24 @@ namespace TcAuthentication.Logging
         private static Action<ILogger, Exception> _remoteSignOutSessionIdInvalid;
         private static Action<ILogger, string, Exception> _signOut;
 
+        private static Action<ILogger, string, Exception> _remoteAuthenticationError;
+        private static Action<ILogger, Exception> _signInHandled;
+        private static Action<ILogger, Exception> _signInSkipped;
+
         static LoggingExtensions()
         {
+            _remoteAuthenticationError = LoggerMessage.Define<string>(
+                eventId: 1004,
+                logLevel: LogLevel.Information,
+                formatString: "Error from RemoteAuthenentication: {ErrorMessage}.");
+            _signInHandled = LoggerMessage.Define(
+                eventId: 1005,
+                logLevel: LogLevel.Information,
+                formatString: "The SignIn event returned Handled");
+            _signInSkipped = LoggerMessage.Define(
+                eventId: 1006,
+                logLevel: LogLevel.Information,
+                formatString: "The SignIn event returned Skipped");
             // Final
             _redirectToIdentityProviderForSignOutHandledResponse = LoggerMessage.Define(
                 eventId: 1,
@@ -503,6 +519,18 @@ namespace TcAuthentication.Logging
         public static void SignedOut(this ILogger logger, string authenticationScheme)
         {
             _signOut(logger, authenticationScheme, null);
+        }
+        public static void RemoteAuthenticationError(this ILogger logger, string errorMessage)
+        {
+            _remoteAuthenticationError(logger, errorMessage, null);
+        }
+        public static void SigninHandled(this ILogger logger)
+        {
+            _signInHandled(logger, null);
+        }
+        public static void SigninSkipped(this ILogger logger)
+        {
+            _signInSkipped(logger, null);
         }
     }
 }

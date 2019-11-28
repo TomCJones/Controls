@@ -1,0 +1,59 @@
+﻿@page
+@model Controls.Pages.ClientPages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.sub)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.sub)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.updated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.updated)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.publicKey)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.publicKey)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client.purpose)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.purpose)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Client.locator" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
