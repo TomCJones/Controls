@@ -52,6 +52,7 @@ namespace Controls.Models
     public class Client
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public UInt64 locator { get; set; }  // this is the record locator used to find the client data
         public string sub { get; set; }      // this is the subject ID that is used between the subject and authenticaotr
         public ulong created { get; set; }

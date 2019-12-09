@@ -36,8 +36,27 @@ namespace Controls.Pages.ClientPages
             ulong unixNow = (ulong) DateTimeOffset.Now.ToUnixTimeSeconds();
             Client.created = unixNow;
             Client.updated = unixNow;
+            // the following code creates a randon number to use as the locator code
+            Guid gTest = Guid.NewGuid();
+            byte[] gBytes = gTest.ToByteArray();
+            int index = 0;
+            Client.locator = BitConverter.ToUInt64(gBytes, index);
+            string encoded = Convert.ToBase64String(gBytes);
+            //         [System.CLSCompliant(false)]
+            //     public static UInt64 ToUInt64(byte[] value, int startIndex);
+            byte[] testit = Convert.FromBase64String(encoded);
+            ulong uTestit = BitConverter.ToUInt64(testit, index);
 
-            _context.clients.Add(Client);
+            try
+            {
+                _context.clients.Add(Client);
+            }
+            catch (Exception e)   // the assumption here is that the only exception is an existing key - TODO test to see if that is the case
+            {
+                Client.locator += 1;   //  TODO create a test for this that is meaningfull
+                _context.clients.Add(Client);
+            }
+
             int iRet = await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -50,6 +50,8 @@ namespace Controls.Pages.ClientPages
 
             try
             {
+                UInt64 unixNow = (ulong)DateTimeOffset.Now.ToUnixTimeSeconds();
+                Client.updated = unixNow;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

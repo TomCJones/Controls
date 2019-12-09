@@ -6,12 +6,15 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Client</h4>
-    <hr />
+
     <dl class="row">
+        <dt class="col-sm-2">
+            <h3>Details of Client</h3>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.locator)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Client.sub)
         </dt>
