@@ -47,7 +47,9 @@ namespace Controls.Models
         public UserRole(string roleName) { Name = roleName; }
     }
     /// <summary>
-    /// Clients are the folk that come to us for service
+    /// Clients are the folk that come to us for service they will each be assigned a record locator
+    /// locators as created as numbers that cannot be easily guessed by an attacker = semi-random
+    /// uniqueness of the locator will be guaranteed by the database
     /// </summary>
     public class Client
     {
@@ -63,21 +65,23 @@ namespace Controls.Models
         public ICollection<Request> Requests { get; set; }
     }
     /// <summary>
-    /// A request is issued for enabling access to a DOI it is only valide for a fixed time interval
+    /// A request is issued for enabling access to a DOI it is only valid for a fixed time interval determined by the code
+    /// A second time interval for validity is created on first use of the request; also determine by the code
+    /// a thrid validity period is enabled by a count of the number of uses of the request; also determine by the code
     /// </summary>
     public class Request
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public UInt64 id { get; set; }
-        public Guid cli_id { get; set; }
-        public string doi { get; set; }
+        public Guid cli_id { get; set; }  // not needed in the code base - could be the sub?
+        public string doi { get; set; }   // coded in Google App format us.trustregistry.{base64 of locator}
         public ulong doi_date { get; set; }
         public ulong first_use { get; set; }
         public uint count_use { get; set; }
         public string status { get; set; }
         public string methods { get; set; }
-        public string cert { get; set; }
+        public string cert { get; set; }  // not needed in the code base
     }
 
 }

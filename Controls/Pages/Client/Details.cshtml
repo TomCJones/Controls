@@ -53,6 +53,11 @@
         </dd>
     </dl>
 </div>
+<a href="~/Requests/Create?@Html.DisplayFor(model => model.Client.locator)">
+    <button type="submit" formaction="~/Requests/Create?" value="@Html.DisplayFor(model => model.Client.locator)">
+        Create a doi to give Patient
+    </button>
+</a>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Client.locator">Edit</a> |
     <a asp-page="./Index">Back to List</a>

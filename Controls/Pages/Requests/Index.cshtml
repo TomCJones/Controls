@@ -1,0 +1,79 @@
+﻿@page
+@model Controls.Pages.Requests.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>List of Requests</h1>
+
+<p>
+    <a asp-page="Create">Create New Request</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].cli_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].doi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].doi_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].first_use)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].count_use)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].methods)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].cert)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Request) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cli_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doi_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_use)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.count_use)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.methods)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cert)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

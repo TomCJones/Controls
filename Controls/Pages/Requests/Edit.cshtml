@@ -1,0 +1,71 @@
+﻿@page
+@model Controls.Pages.Requests.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Request</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Request.id" />
+            <div class="form-group">
+                <label asp-for="Request.cli_id" class="control-label"></label>
+                <input asp-for="Request.cli_id" class="form-control" />
+                <span asp-validation-for="Request.cli_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.doi" class="control-label"></label>
+                <input asp-for="Request.doi" class="form-control" />
+                <span asp-validation-for="Request.doi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.doi_date" class="control-label"></label>
+                <input asp-for="Request.doi_date" class="form-control" />
+                <span asp-validation-for="Request.doi_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.first_use" class="control-label"></label>
+                <input asp-for="Request.first_use" class="form-control" />
+                <span asp-validation-for="Request.first_use" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.count_use" class="control-label"></label>
+                <input asp-for="Request.count_use" class="form-control" />
+                <span asp-validation-for="Request.count_use" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.status" class="control-label"></label>
+                <input asp-for="Request.status" class="form-control" />
+                <span asp-validation-for="Request.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.methods" class="control-label"></label>
+                <input asp-for="Request.methods" class="form-control" />
+                <span asp-validation-for="Request.methods" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.cert" class="control-label"></label>
+                <input asp-for="Request.cert" class="form-control" />
+                <span asp-validation-for="Request.cert" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
