@@ -22,7 +22,6 @@ namespace Controls.Migrations
             modelBuilder.Entity("Controls.Models.Client", b =>
                 {
                     b.Property<decimal>("locator")
-                        .ValueGeneratedOnAdd()
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
 
                     b.Property<decimal>("created")
@@ -80,9 +79,9 @@ namespace Controls.Migrations
 
             modelBuilder.Entity("Controls.Models.Request", b =>
                 {
-                    b.Property<decimal>("id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal?>("Clientlocator")
                         .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
@@ -105,7 +104,7 @@ namespace Controls.Migrations
 
                     b.Property<string>("status");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("Clientlocator");
 

@@ -23,14 +23,14 @@ namespace Controls.Pages.Requests
         [BindProperty]
         public Request Request { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(ulong? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Request = await _context.requests.FirstOrDefaultAsync(m => m.id == id);
+            Request = await _context.requests.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Request == null)
             {
@@ -54,7 +54,7 @@ namespace Controls.Pages.Requests
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RequestExists(Request.id))
+                if (!RequestExists(Request.Id))
                 {
                     return NotFound();
                 }
@@ -67,9 +67,9 @@ namespace Controls.Pages.Requests
             return RedirectToPage("./Index");
         }
 
-        private bool RequestExists(ulong id)
+        private bool RequestExists(long id)
         {
-            return _context.requests.Any(e => e.id == id);
+            return _context.requests.Any(e => e.Id == id);
         }
     }
 }

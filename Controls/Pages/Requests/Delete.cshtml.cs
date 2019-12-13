@@ -22,14 +22,14 @@ namespace Controls.Pages.Requests
         [BindProperty]
         public Request Request { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(ulong? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Request = await _context.requests.FirstOrDefaultAsync(m => m.id == id);
+            Request = await _context.requests.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Request == null)
             {

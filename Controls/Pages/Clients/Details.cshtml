@@ -1,5 +1,5 @@
 ﻿@page
-@model Controls.Pages.ClientPages.DetailsModel
+@model Controls.Pages.Clients.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -53,8 +53,8 @@
         </dd>
     </dl>
 </div>
-<a href="~/Requests/Create?@Html.DisplayFor(model => model.Client.locator)">
-    <button type="submit" formaction="~/Requests/Create?" value="@Html.DisplayFor(model => model.Client.locator)">
+<a href="~/Requests/Create?id=@Html.DisplayFor(model => model.Client.locator)">
+    <button type="submit"  value="@Html.DisplayFor(model => model.Client.locator)">
         Create a doi to give Patient
     </button>
 </a>

@@ -1,5 +1,7 @@
 ﻿@page
 @model Controls.Pages.Requests.DetailsModel
+@using Controls.Helpers
+@addTagHelper *, Controls
 
 @{
     ViewData["Title"] = "Details";
@@ -63,6 +65,10 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Request.id">Edit</a> |
+    <qrcode alt="DOI request" content="@Model.DoiInstance" />
+    @Model.DoiInstance
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Request.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

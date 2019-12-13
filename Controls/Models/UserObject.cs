@@ -73,7 +73,7 @@ namespace Controls.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public UInt64 id { get; set; }
+        public long Id { get; set; }
         public Guid cli_id { get; set; }  // not needed in the code base - could be the sub?
         public string doi { get; set; }   // coded in Google App format us.trustregistry.{base64 of locator}
         public ulong doi_date { get; set; }

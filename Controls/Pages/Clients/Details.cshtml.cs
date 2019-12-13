@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Controls.Data;
 using Controls.Models;
 
-namespace Controls.Pages.ClientPages
+namespace Controls.Pages.Clients
 {
     public class DetailsModel : PageModel
     {

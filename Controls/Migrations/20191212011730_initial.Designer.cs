@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Controls.Migrations
 {
     [DbContext(typeof(ControlsDbContext))]
-    [Migration("20191125194918_UInt64 key for locator")]
-    partial class UInt64keyforlocator
+    [Migration("20191212011730_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,30 @@ namespace Controls.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Controls.Models.Client", b =>
+                {
+                    b.Property<decimal>("locator")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.Property<decimal>("created")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.Property<string>("publicKey");
+
+                    b.Property<string>("purpose");
+
+                    b.Property<string>("status");
+
+                    b.Property<string>("sub");
+
+                    b.Property<decimal>("updated")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.HasKey("locator");
+
+                    b.ToTable("clients");
+                });
 
             modelBuilder.Entity("Controls.Models.ContactLink", b =>
                 {
@@ -53,6 +77,40 @@ namespace Controls.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("contactLinks");
+                });
+
+            modelBuilder.Entity("Controls.Models.Request", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal?>("Clientlocator")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.Property<string>("cert");
+
+                    b.Property<Guid>("cli_id");
+
+                    b.Property<long>("count_use");
+
+                    b.Property<string>("doi");
+
+                    b.Property<decimal>("doi_date")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.Property<decimal>("first_use")
+                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+
+                    b.Property<string>("methods");
+
+                    b.Property<string>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Clientlocator");
+
+                    b.ToTable("requests");
                 });
 
             modelBuilder.Entity("Controls.Models.UserObject", b =>
@@ -214,6 +272,13 @@ namespace Controls.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Controls.Models.Request", b =>
+                {
+                    b.HasOne("Controls.Models.Client")
+                        .WithMany("Requests")
+                        .HasForeignKey("Clientlocator");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

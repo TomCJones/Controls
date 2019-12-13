@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Controls.Data;
 using Controls.Models;
 
-namespace Controls.Pages.ClientPages
+namespace Controls.Pages.Clients
 {
     public class IndexModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Controls.Pages.ClientPages
 
         public async Task OnGetAsync()
         {
-            Client = await _context.clients.ToListAsync();
+            Client = (IList<Client>) await _context.clients.ToListAsync();
         }
     }
 }

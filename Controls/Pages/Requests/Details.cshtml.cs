@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Controls.Data;
 using Controls.Models;
+using ZXing.QrCode;
+using System.IO;
 
 namespace Controls.Pages.Requests
 {
@@ -18,22 +16,26 @@ namespace Controls.Pages.Requests
         {
             _context = context;
         }
-
+ 
         public Request Request { get; set; }
+        public string DoiInstance;
 
-        public async Task<IActionResult> OnGetAsync(ulong? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Request = await _context.requests.FirstOrDefaultAsync(m => m.id == id);
+            Request = await _context.requests.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Request == null)
             {
                 return NotFound();
             }
+            // TODO set nocache because the image is not likely to be ever used again
+            DoiInstance = Request.doi + ";" + Request.doi_date;   // TODO encode doi & data
+
             return Page();
         }
     }
