@@ -30,7 +30,7 @@ namespace Controls.Pages.Requests
             bool bSV = query.TryGetValue("id", out sv);
             string id = sv.FirstOrDefault();
             Request.doi = Authority + "." + id;
-            ulong unixNow = (ulong)DateTimeOffset.Now.ToUnixTimeSeconds();
+            long unixNow = (long)DateTimeOffset.Now.ToUnixTimeSeconds();
             Request.doi_date = unixNow;
             return Page();
         }

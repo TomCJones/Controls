@@ -22,7 +22,7 @@ namespace Controls.Pages.Clients
         [BindProperty]
         public Client Client { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(ulong? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {
@@ -38,7 +38,7 @@ namespace Controls.Pages.Clients
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(ulong? id)
+        public async Task<IActionResult> OnPostAsync(long? id)
         {
             if (id == null)
             {

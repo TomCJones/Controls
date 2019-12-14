@@ -55,10 +55,10 @@ namespace Controls.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public UInt64 locator { get; set; }  // this is the record locator used to find the client data
+        public long locator { get; set; }  // this is the record locator used to find the client data
         public string sub { get; set; }      // this is the subject ID that is used between the subject and authenticaotr
-        public ulong created { get; set; }
-        public ulong updated { get; set; }
+        public long created { get; set; }
+        public long updated { get; set; }
         public string publicKey { get; set; }
         public string status { get; set; }
         public string purpose { get; set; }
@@ -76,9 +76,9 @@ namespace Controls.Models
         public long Id { get; set; }
         public Guid cli_id { get; set; }  // not needed in the code base - could be the sub?
         public string doi { get; set; }   // coded in Google App format us.trustregistry.{base64 of locator}
-        public ulong doi_date { get; set; }
-        public ulong first_use { get; set; }
-        public uint count_use { get; set; }
+        public long doi_date { get; set; }
+        public long first_use { get; set; }
+        public int count_use { get; set; }
         public string status { get; set; }
         public string methods { get; set; }
         public string cert { get; set; }  // not needed in the code base

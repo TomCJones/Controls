@@ -23,7 +23,7 @@ namespace Controls.Pages.Clients
         [BindProperty]
         public Client Client { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(ulong? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {
@@ -50,7 +50,7 @@ namespace Controls.Pages.Clients
 
             try
             {
-                UInt64 unixNow = (ulong)DateTimeOffset.Now.ToUnixTimeSeconds();
+                long unixNow = (long)DateTimeOffset.Now.ToUnixTimeSeconds();
                 Client.updated = unixNow;
                 await _context.SaveChangesAsync();
             }
@@ -69,7 +69,7 @@ namespace Controls.Pages.Clients
             return RedirectToPage("./Index");
         }
 
-        private bool ClientExists(ulong id)
+        private bool ClientExists(long id)
         {
             return _context.clients.Any(e => e.locator == id);
         }

@@ -21,7 +21,7 @@ namespace Controls.Pages.Clients
 
         public Client Client { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(ulong? id)
+        public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
             {

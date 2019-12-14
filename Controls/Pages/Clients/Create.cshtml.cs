@@ -33,14 +33,14 @@ namespace Controls.Pages.Clients
             {
                 return Page();
             }
-            ulong unixNow = (ulong) DateTimeOffset.Now.ToUnixTimeSeconds();
+            long unixNow = (long) DateTimeOffset.Now.ToUnixTimeSeconds();
             Client.created = unixNow;
             Client.updated = unixNow;
             // the following code creates a randon number to use as the locator code
             Guid gTest = Guid.NewGuid();
             byte[] gBytes = gTest.ToByteArray();
             int index = 0;
-            Client.locator = BitConverter.ToUInt64(gBytes, index);
+            Client.locator = BitConverter.ToInt64(gBytes, index);
             string encoded = Convert.ToBase64String(gBytes);
             //         [System.CLSCompliant(false)]
             //     public static UInt64 ToUInt64(byte[] value, int startIndex);

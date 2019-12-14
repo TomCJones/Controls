@@ -21,11 +21,9 @@ namespace Controls.Migrations
 
             modelBuilder.Entity("Controls.Models.Client", b =>
                 {
-                    b.Property<decimal>("locator")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                    b.Property<long>("locator");
 
-                    b.Property<decimal>("created")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                    b.Property<long>("created");
 
                     b.Property<string>("publicKey");
 
@@ -35,8 +33,7 @@ namespace Controls.Migrations
 
                     b.Property<string>("sub");
 
-                    b.Property<decimal>("updated")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                    b.Property<long>("updated");
 
                     b.HasKey("locator");
 
@@ -83,22 +80,19 @@ namespace Controls.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal?>("Clientlocator")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                    b.Property<long?>("Clientlocator");
 
                     b.Property<string>("cert");
 
                     b.Property<Guid>("cli_id");
 
-                    b.Property<long>("count_use");
+                    b.Property<int>("count_use");
 
                     b.Property<string>("doi");
 
-                    b.Property<decimal>("doi_date")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                    b.Property<long>("doi_date");
 
-                    b.Property<decimal>("first_use")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
+                    b.Property<long>("first_use");
 
                     b.Property<string>("methods");
 
