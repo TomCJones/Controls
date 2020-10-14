@@ -1,0 +1,24 @@
+CREATE TABLE [dbo].[requests] (
+    [Id]            BIGINT           IDENTITY (1, 1) NOT NULL,
+    [cli_id]        UNIQUEIDENTIFIER NOT NULL,
+    [doi]           NVARCHAR (MAX)   NULL,
+    [doi_date]      BIGINT           NOT NULL,
+    [first_use]     BIGINT           NOT NULL,
+    [count_use]     INT              NOT NULL,
+    [status]        NVARCHAR (MAX)   NULL,
+    [methods]       NVARCHAR (MAX)   NULL,
+    [cert]          NVARCHAR (MAX)   NULL,
+    [Clientlocator] BIGINT           NULL,
+    CONSTRAINT [PK_requests] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_requests_clients_Clientlocator] FOREIGN KEY ([Clientlocator]) REFERENCES [dbo].[clients] ([locator])
+);
+CREATE TABLE [dbo].[clients] (
+    [locator]   BIGINT         NOT NULL,
+    [sub]       NVARCHAR (MAX) NULL,
+    [created]   BIGINT         NOT NULL,
+    [updated]   BIGINT         NOT NULL,
+    [publicKey] NVARCHAR (MAX) NULL,
+    [status]    NVARCHAR (MAX) NULL,
+    [purpose]   NVARCHAR (MAX) NULL,
+    CONSTRAINT [PK_clients] PRIMARY KEY CLUSTERED ([locator] ASC)
+);

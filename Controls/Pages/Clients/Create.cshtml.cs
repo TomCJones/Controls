@@ -41,6 +41,7 @@ namespace Controls.Pages.Clients
             byte[] gBytes = gTest.ToByteArray();
             int index = 0;
             Client.locator = BitConverter.ToInt64(gBytes, index);
+            if (Client.locator <0) { Client.locator = -Client.locator; }
             string encoded = Convert.ToBase64String(gBytes);
             //         [System.CLSCompliant(false)]
             //     public static UInt64 ToUInt64(byte[] value, int startIndex);
